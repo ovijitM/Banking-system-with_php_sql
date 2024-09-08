@@ -1,4 +1,4 @@
-# Echo Bank and Admin Database Management System
+# Echo Bank Database Management System
 
 This project is a comprehensive database management system for a fictional bank, Echo Bank, and its administrative counterpart. The system handles various banking functionalities for customers, banks, and administrators, including account management, transactions, loan processing, and complaints. 
 
