@@ -22,18 +22,18 @@ This project is a comprehensive database management system for a fictional bank,
    **Fields:**  
    - `account_number`: 10-digit unique identifier for the account.  
    - `username`: Username of the customer.  
-   - `password`: Encrypted password of the customer.  
+   - `password`: password of the customer.  
    - `DOB`: Date of birth of the customer.  
    - `NID`: 10-digit National ID number.  
    - `timestamp`: Date and time when the account was approved.  
    - `Balance`: Current balance in the account.  
-   - `status`: Account status (e.g., active, suspended).  
+   - `status`: Account status (e.g., approved , pending).  
 
 2. **customer_info** - Stores information about customer account requests.  
    **Fields:**  
    - `account_number`: 10-digit unique identifier for the account.  
    - `username`: Username of the customer.  
-   - `password`: Encrypted password of the customer.  
+   - `password`: password of the customer.  
    - `DOB`: Date of birth of the customer.  
    - `NID`: 10-digit National ID number.  
    - `timestamp`: Date and time of the account creation request.  
