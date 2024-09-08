@@ -132,8 +132,8 @@ This project is a comprehensive database management system for a fictional bank,
 
 ## Table Structures
 
-### Customer Approve Table
 ```sql
+-- Customer Approve Table
 CREATE TABLE customer_approve (
     account_number VARCHAR(10) PRIMARY KEY,
     username VARCHAR(50),
