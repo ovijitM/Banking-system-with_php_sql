@@ -13,7 +13,7 @@
 - [🛠️ Functionalities](#functionalities)
 - [📊 Table Structures](#table-structures)
 - [📝 SQL Schema](#sql-schema)
-- [📝 ER Diagram] (#ER-diagram)
+- [📝 ER Diagram] (#er-diagram)
 
 ---
 
