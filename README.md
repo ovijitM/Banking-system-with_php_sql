@@ -87,7 +87,10 @@ CREATE TABLE customer (
     balance DECIMAL(18, 2) DEFAULT 0.00,
     status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'approved'))
 );
+```
 <h3>Loan Table</h3>
+
+```sql
 -- Loan Table
 CREATE TABLE loan (
     loan_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -100,10 +103,12 @@ CREATE TABLE loan (
     status VARCHAR(20) CHECK (status IN ('pending', 'approved')),
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
+```
 <h2 id="sql-schema">📝 SQL Schema</h2>
 
 <h3>Transaction Table</h3>
 
+```sql
 -- Transaction Table
 CREATE TABLE transaction (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -116,9 +121,10 @@ CREATE TABLE transaction (
     FOREIGN KEY (from_account) REFERENCES customer(account_number),
     FOREIGN KEY (to_account) REFERENCES customer(account_number)
 );
-
+```
 <h3>Donation Table</h3>
 
+```sql
 -- Donation Table
 CREATE TABLE donation (
     donation_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -127,9 +133,11 @@ CREATE TABLE donation (
     amount DECIMAL(18, 2) NOT NULL,
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
+```
 
 <h3>Complain Box Table</h3>
 
+```sql
 -- Complain Box Table
 CREATE TABLE complain_box (
     complain_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -140,8 +148,11 @@ CREATE TABLE complain_box (
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 
+```
+
 <h3>Vault Table</h3>
 
+```sql
 -- Vault Table
 CREATE TABLE vault (
     vault_id INT PRIMARY KEY AUTO_INCREMENT,
