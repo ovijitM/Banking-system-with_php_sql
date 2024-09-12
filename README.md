@@ -1,211 +1,150 @@
-# Echo Bank Database Management System
+# <h1 align="center">Echo Bank Database Management System</h1>
 
-This project is a comprehensive database management system for a fictional bank, Echo Bank, and its administrative counterpart. The system handles various banking functionalities for customers, banks, and administrators, including account management, transactions, loan processing, and complaints. 
+<p align="center">
+    <img src="https://via.placeholder.com/150" alt="Echo Bank Logo" />
+</p>
 
-## Table of Contents
-- [Database Structure](#database-structure)
-  - [Database 1: Echo Bank](#database-1-echo-bank)
-  - [Database 2: Admin](#database-2-admin)
-- [Functionalities](#functionalities)
-  - [Bank Side Functionalities](#bank-side-functionalities)
-  - [User Side Functionalities](#user-side-functionalities)
-  - [Admin Panel Functionalities](#admin-panel-functionalities)
-- [Table Structures](#table-structures)
+<p align="center">
+    A comprehensive database management system for Echo Bank, managing customer accounts, transactions, loans, donations, and complaints.
+</p>
 
 ---
 
-## Database Structure
+## <h2 id="table-of-contents">📑 Table of Contents</h2>
 
-### Database 1: Echo Bank
-
-1. **customer_approve** - Stores information about approved customers.  
-   **Fields:**  
-   - `account_number`: 10-digit unique identifier for the account.  
-   - `username`: Username of the customer.  
-   - `password`: password of the customer.  
-   - `DOB`: Date of birth of the customer.  
-   - `NID`: 10-digit National ID number.  
-   - `timestamp`: Date and time when the account was approved.  
-   - `Balance`: Current balance in the account.  
-   - `status`: Account status (e.g., approved , pending).  
-
-2. **customer_info** - Stores information about customer account requests.  
-   **Fields:**  
-   - `account_number`: 10-digit unique identifier for the account.  
-   - `username`: Username of the customer.  
-   - `password`: password of the customer.  
-   - `DOB`: Date of birth of the customer.  
-   - `NID`: 10-digit National ID number.  
-   - `timestamp`: Date and time of the account creation request.  
-   - `Balance`: Initial balance.  
-
-3. **transaction** - Stores transaction details between accounts.  
-   **Fields:**  
-   - `from_account`: Sender's account number.  
-   - `to_account`: Receiver's account number.  
-   - `amount`: Transaction amount.  
-   - `transaction_type`: Type of transaction (e.g., deposit, withdrawal).  
-   - `timestamp`: Date and time of the transaction.  
-
-4. **loan_req** - Stores information about loan requests made by customers.  
-   **Fields:**  
-   - `account_number`: Customer's account number.  
-   - `username`: Username of the customer.  
-   - `cause`: Reason for the loan.  
-   - `amount`: Loan amount requested.  
-   - `timestamp`: Date and time of the request.  
-   - `status`: Loan status (e.g., pending, approved).  
-
-5. **loan_info** - Stores information about approved loans.  
-   **Fields:**  
-   - `account_number`: Customer's account number.  
-   - `username`: Username of the customer.  
-   - `cause`: Reason for the loan.  
-   - `amount`: Approved loan amount.  
-   - `timestamp`: Date and time of loan approval.  
-
-6. **donation** - Stores details of donations made by customers.  
-   **Fields:**  
-   - `username`: Username of the donor.  
-   - `account_number`: Donor's account number.  
-   - `amount`: Donation amount.  
-
-7. **complain_box** - Stores complaints submitted by users.  
-   **Fields:**  
-   - `username`: Username of the complainant.  
-   - `account_number`: Complainant's account number.  
-   - `cause`: Reason for the complaint.  
-   - `status`: Status of the complaint (e.g., bank, user).  
-
-### Database 2: Admin
-
-1. **bank_approve** - Stores information about approved banks.  
-   **Fields:**  
-   - `bank_name`: Name of the bank.  
-   - `bank_owner`: Owner of the bank.  
-   - `initial_balance`: Initial balance of the bank.  
-   - `approve`: Approval status of the bank.  
-
-2. **bank_info** - Stores information about authorized banks.  
-   **Fields:**  
-   - `bank_name`: Name of the bank.  
-   - `master_account_number`: Unique identifier for the bank's master account.  
-   - `initial_balance`: Initial balance of the bank.  
-   - `timestamp`: Date and time of bank authorization.  
+- [🏦 Database Structure](#database-structure)
+- [🛠️ Functionalities](#functionalities)
+- [📊 Table Structures](#table-structures)
+- [📝 SQL Schema](#sql-schema)
+- [📜 HTML Format](#html-format)
 
 ---
 
-## Functionalities
+## <h2 id="database-structure">🏦 Database Structure</h2>
 
-### Bank Side Functionalities
+### <h3>Tables</h3>
 
-1. **Open Account**: Bank staff can approve account opening requests submitted by customers.
-2. **Transaction History**: View the transaction history of any account.
-3. **Deposit**: Add funds to a customer's account.
-4. **Withdraw**: Withdraw funds from a customer's account.
-5. **Fund Transfer**: Transfer funds between accounts within the bank.
-6. **Loan Approval**: Review and approve or deny loan requests.
-7. **User Approval**: Approve or reject user account requests.
-8. **Loan Calculator**: Calculate loan amounts, interest, and repayment schedules.
-9. **Complain List**: View and manage complaints submitted by customers.
-
-### User Side Functionalities
-
-1. **Account Open Request**: Submit a request to open an account if the user does not have one.
-2. **Sign In**: Log in to the user account.
-3. **Send Money**: Transfer money to another account.
-4. **Pay Bill**: Pay bills using the account balance.
-5. **Loan Apply**: Apply for a loan, specifying the amount and cause.
-6. **Donation**: Donate funds to specified accounts or causes.
-7. **Complain Box**: Submit complaints about services or issues.
-8. **Loan Calculator**: Calculate possible loan terms and amounts.
-9. **User Transaction History**: View personal transaction history.
-10. **Dashboard**: View account balance, recent transactions, and other account information.
-
-### Admin Panel Functionalities
-
-1. **Bank Creation**: Create new banks within the system.
-2. **Bank Authorization**: Approve new banks and set initial balances.
-3. **Bank Balance Control**: Manage and control the balance of banks using the vault balance.
+1. **Customer Table**: Stores all customer details, including approved and pending accounts.
+2. **Loan Table**: Stores details about loan requests and approvals with unique loan account numbers.
+3. **Transaction Table**: Records all transactions with unique reference IDs for each.
+4. **Donation Table**: Stores details of donations made by customers.
+5. **Complain Box Table**: Stores complaints submitted by customers.
+6. **Vault Table**: Holds the balance of the bank's vault.
 
 ---
 
-## Table Structures
+## <h2 id="functionalities">🛠️ Functionalities</h2>
+
+### <h3>Bank Side Functionalities</h3>
+
+- **Open Account**: Approve account requests submitted by customers.
+- **Transaction History**: View transaction history of any account.
+- **Deposit**: Add funds to a customer account.
+- **Withdraw**: Withdraw funds from a customer account.
+- **Fund Transfer**: Transfer funds between accounts within the bank.
+- **Loan Approval**: Review and approve or deny loan requests.
+- **User Approval**: Approve or reject user account requests.
+- **Loan Calculator**: Calculate loan amounts, interest, and repayment schedules.
+- **Complain List**: View and manage complaints submitted by customers.
+
+### <h3>User Side Functionalities</h3>
+
+- **Account Open Request**: Submit a request to open an account.
+- **Sign In**: Log in to the user account.
+- **Send Money**: Transfer money to another account.
+- **Pay Bill**: Pay bills using the account balance.
+- **Loan Apply**: Apply for a loan, specifying the amount and purpose.
+- **Donation**: Donate funds to specified accounts or causes.
+- **Complain Box**: Submit complaints about services or issues.
+- **Loan Calculator**: Calculate possible loan terms and amounts.
+- **User Transaction History**: View personal transaction history.
+- **Dashboard**: View account balance, recent transactions, and other account information.
+
+---
+
+## <h2 id="table-structures">📊 Table Structures</h2>
+
+| Table Name        | Description                                           |
+|-------------------|-------------------------------------------------------|
+| **Customer**      | Stores customer details, including status and balance |
+| **Loan**          | Manages loan requests and approvals                   |
+| **Transaction**   | Records all transactions with unique reference IDs    |
+| **Donation**      | Logs donations made by customers                      |
+| **Complain Box**  | Stores customer complaints                            |
+| **Vault**         | Holds the bank's total balance                        |
+
+### <h3>Customer Table</h3>
 
 ```sql
--- Customer Approve Table
-CREATE TABLE customer_approve (
+-- Customer Table
+CREATE TABLE customer (
     account_number VARCHAR(10) PRIMARY KEY,
-    username VARCHAR(50),
-    password VARCHAR(255),
-    DOB DATE,
-    NID VARCHAR(10),
-    timestamp DATETIME,
-    Balance DECIMAL(18, 2),
-    status VARCHAR(20)
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    DOB DATE NOT NULL,
+    NID VARCHAR(10) UNIQUE NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    balance DECIMAL(18, 2) DEFAULT 0.00,
+    status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'approved'))
 );
-
--- Customer Info Table
-CREATE TABLE customer_info (
+<h3>Loan Table</h3>
+-- Loan Table
+CREATE TABLE loan (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+    loan_account_number VARCHAR(15) UNIQUE NOT NULL,
     account_number VARCHAR(10),
     username VARCHAR(50),
-    password VARCHAR(255),
-    DOB DATE,
-    NID VARCHAR(10),
-    timestamp DATETIME,
-    Balance DECIMAL(18, 2)
+    cause VARCHAR(255),
+    amount DECIMAL(18, 2),
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) CHECK (status IN ('pending', 'approved')),
+    FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
+<h2 id="sql-schema">📝 SQL Schema</h2>
+
+<h3>Transaction Table</h3>
+
 -- Transaction Table
 CREATE TABLE transaction (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    reference_id VARCHAR(20) UNIQUE NOT NULL,
     from_account VARCHAR(10),
     to_account VARCHAR(10),
-    amount DECIMAL(18, 2),
-    transaction_type VARCHAR(20),
-    timestamp DATETIME
+    amount DECIMAL(18, 2) NOT NULL,
+    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer')),
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (from_account) REFERENCES customer(account_number),
+    FOREIGN KEY (to_account) REFERENCES customer(account_number)
 );
 
--- Loan Request Table
-CREATE TABLE loan_req (
-    account_number VARCHAR(10),
-    username VARCHAR(50),
-    cause VARCHAR(255),
-    amount DECIMAL(18, 2),
-    timestamp DATETIME,
-    status VARCHAR(20)
-);
--- Loan Info Table
-CREATE TABLE loan_info (
-    account_number VARCHAR(10),
-    username VARCHAR(50),
-    cause VARCHAR(255),
-    amount DECIMAL(18, 2),
-    timestamp DATETIME
-);
+<h3>Donation Table</h3>
+
 -- Donation Table
 CREATE TABLE donation (
+    donation_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
     account_number VARCHAR(10),
-    amount DECIMAL(18, 2)
-);
--- Complain Box Table
-CREATE TABLE complain_box (
-    username VARCHAR(50),
-    account_number VARCHAR(10),
-    cause VARCHAR(255),
-    status VARCHAR(20)
+    amount DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 
--- Bank Approve Table
-CREATE TABLE bank_approve (
-    bank_name VARCHAR(50),
-    bank_owner VARCHAR(50),
-    initial_balance DECIMAL(18, 2),
-    approve BOOLEAN
+<h3>Complain Box Table</h3>
+
+-- Complain Box Table
+CREATE TABLE complain_box (
+    complain_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    account_number VARCHAR(10),
+    cause VARCHAR(255) NOT NULL,
+    status VARCHAR(20) CHECK (status IN ('resolved', 'pending')),
+    FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
--- Bank Info Table
-CREATE TABLE bank_info (
-    bank_name VARCHAR(50),
-    master_account_number VARCHAR(10),
-    initial_balance DECIMAL(18, 2),
-    timestamp DATETIME
+
+<h3>Vault Table</h3>
+
+-- Vault Table
+CREATE TABLE vault (
+    vault_id INT PRIMARY KEY AUTO_INCREMENT,
+    balance DECIMAL(18, 2) NOT NULL
 );
+```
