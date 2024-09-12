@@ -13,7 +13,7 @@
 - [🛠️ Functionalities](#functionalities)
 - [📊 Table Structures](#table-structures)
 - [📝 SQL Schema](#sql-schema)
-- [📜 HTML Format](#html-format)
+- [📝 ER Diagram] (#ER-diagram)
 
 ---
 
@@ -101,7 +101,6 @@ CREATE TABLE loan (
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 ```
-<h2 id="sql-schema">📝 SQL Schema</h2>
 
 <h3>Transaction Table</h3>
 
