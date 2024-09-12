@@ -1,8 +1,5 @@
 # <h1 align="center">Echo Bank Database Management System</h1>
 
-<p align="center">
-    <img src="https://via.placeholder.com/150" alt="Echo Bank Logo" />
-</p>
 
 <p align="center">
     A comprehensive database management system for Echo Bank, managing customer accounts, transactions, loans, donations, and complaints.
