@@ -75,15 +75,18 @@
 ```sql
 -- Customer Table
 CREATE TABLE customer (
-    account_number VARCHAR(10) PRIMARY KEY,
+    account_number VARCHAR(12) NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     DOB DATE NOT NULL,
-    NID VARCHAR(10) UNIQUE NOT NULL,
+    NID VARCHAR(10) UNIQUE,
+    address VARCHAR(255) NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     balance DECIMAL(18, 2) DEFAULT 0.00,
-    status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'approved'))
+    status TINYINT(1) NOT NULL
 );
+
 ```
 <h3>Loan Table</h3>
 
@@ -92,12 +95,12 @@ CREATE TABLE customer (
 CREATE TABLE loan (
     loan_id INT AUTO_INCREMENT PRIMARY KEY,
     loan_account_number VARCHAR(15) UNIQUE NOT NULL,
-    account_number VARCHAR(10),
+    account_number VARCHAR(12),
     username VARCHAR(50),
     cause VARCHAR(255),
     amount DECIMAL(18, 2),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20) CHECK (status IN ('pending', 'approved')),
+    status TINYINT(1) NOT NULL ,
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 ```
@@ -108,9 +111,9 @@ CREATE TABLE loan (
 -- Transaction Table
 CREATE TABLE transaction (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-    reference_id VARCHAR(20) UNIQUE NOT NULL,
-    from_account VARCHAR(10),
-    to_account VARCHAR(10),
+    reference_id VARCHAR(10) UNIQUE NOT NULL,
+    from_account VARCHAR(12),
+    to_account VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
     transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -125,7 +128,7 @@ CREATE TABLE transaction (
 CREATE TABLE donation (
     donation_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
-    account_number VARCHAR(10),
+    account_number VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
@@ -138,9 +141,9 @@ CREATE TABLE donation (
 CREATE TABLE complain_box (
     complain_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
-    account_number VARCHAR(10),
+    account_number VARCHAR(12),
     cause VARCHAR(255) NOT NULL,
-    status VARCHAR(20) CHECK (status IN ('resolved', 'pending')),
+    status TINYINT(1) NOT NULL,
     FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 
@@ -151,8 +154,9 @@ CREATE TABLE complain_box (
 ```sql
 -- Vault Table
 CREATE TABLE vault (
-    vault_id INT PRIMARY KEY AUTO_INCREMENT,
-    balance DECIMAL(18, 2) NOT NULL
+    muster_account VARCHAR(12) not null,
+    balance_cash DECIMAL(18, 2) NOT NULL,
+    balance_electric DECIMAL(18, 2) NOT NULL
 );
 ```
 
