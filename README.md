@@ -13,7 +13,7 @@
 - [🛠️ Functionalities](#functionalities)
 - [📊 Table Structures](#table-structures)
 - [📝 SQL Schema](#sql-schema)
-- [📝 ER Diagram] (#er-diagram)
+- [📝 ER Diagram](#er-diagram)
 
 ---
 
@@ -155,3 +155,14 @@ CREATE TABLE vault (
     balance DECIMAL(18, 2) NOT NULL
 );
 ```
+
+## <h2 id="sql-schema">📝 SQL Schema</h2>
+
+You can find the complete SQL schema [[here](https://docs.com/](#sql-schema).
+
+---
+
+## <h2 id="er-diagram">📝 ER Diagram</h2>
+
+Refer to the ER diagram [[here](https://app.diagrams.net/)](#er-diagram) for a visual representation of the database relationships.
+
