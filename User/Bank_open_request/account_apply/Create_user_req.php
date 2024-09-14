@@ -1,5 +1,5 @@
 <?php
-@require "../connectserver.php"; 
+@require "../../connectserver.php"; 
 
 $current_count = 0;
 $result = $conn->query("SELECT COUNT(*) AS count FROM customer");

@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Create a New Bank Account</h1>
-    <form method="POST" action="create_account.php">
+    <form method="POST" action="Create_user.php">
         <div class="form-group">
             <label for="name">Account Holder Name:</label>
             <input type="text" id="name" name="name" required>
@@ -26,6 +26,10 @@
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="address">address</label>
+            <input type="text" id="address" name="address" required>
         </div>
         <div class="form-group">
             <label for="balance">Initial Deposit:</label>
