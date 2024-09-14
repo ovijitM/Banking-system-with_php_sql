@@ -1,0 +1,53 @@
+<?php
+@require "../connectserver.php";
+
+$sql = "SELECT * FROM customer WHERE status = 0";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Approve User</title>
+    <!-- <link rel="stylesheet" href="styles.css"> Make sure this path is correct -->
+</head>
+<body>
+    <div class="container">
+        <h2>Pending User Applications</h2>
+        <table>
+            <tr>
+                <th>Account number</th>
+                <th>Holder Name</th>
+                <th>email</th>
+                <th>Date of Birth</th>
+                <th>NID</th>
+                <th>Address</th>
+                <th>status</th>
+            </tr>
+            <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $row['account_number']; ?></td>
+                <td><?php echo $row['username']; ?></td>
+                <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['DOB']; ?></td>
+                <td><?php echo $row['NID']; ?></td>
+                <td><?php echo $row['address']; ?></td>
+                <td><?php echo $row['status']; ?></td>
+                <td>
+                <form method="post" action="User_approval.php">
+                    <input type="hidden" name="account_number" value="<?php echo $row['account_number']; ?>">
+                    <button type="submit" name="approve">Approve</button>
+                    <button type="submit" name="reject">Reject</button>
+                </form>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+    </div>
+</body>
+</html>
+
+
+<?php
+$conn->close();
+?>
