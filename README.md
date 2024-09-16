@@ -69,6 +69,7 @@
 | **Donation**      | Logs donations made by customers                      |
 | **Complain Box**  | Stores customer complaints                            |
 | **Vault**         | Holds the bank's total balance                        |
+| **Stuff**         | Stuffs data is store and stuff logins                 |
 
 ### <h3>Customer Table</h3>
 
