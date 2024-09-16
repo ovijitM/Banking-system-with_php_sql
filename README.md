@@ -27,6 +27,7 @@
 4. **Donation Table**: Stores details of donations made by customers.
 5. **Complain Box Table**: Stores complaints submitted by customers.
 6. **Vault Table**: Holds the balance of the bank's vault.
+7. **Stuff Table**: bank admins are login and their info is store here.
 
 ---
 
