@@ -160,6 +160,17 @@ CREATE TABLE vault (
 );
 ```
 
+<h3>Stuff/Admin Table</h3>
+they have default value for presentation  id: 12345 pass: admin
+
+```sql
+Create Table stuff (
+    stuff_id int(5) ,
+    stuff_name varchar(255),
+    password varchar(50)
+);
+```
+
 ## <h2 id="sql-schema">📝 SQL Schema</h2>
 
 You can find the complete SQL schema [[here](https://docs.com/](#sql-schema).
