@@ -71,6 +71,13 @@
 | **Vault**         | Holds the bank's total balance                        |
 | **Stuff**         | Stuffs data is store and stuff logins                 |
 
+
+### <h3> Create database <h3>
+```
+    Create database echo_bank;
+    use echo_bank;
+```
+
 ### <h3>Customer Table</h3>
 
 ```sql
