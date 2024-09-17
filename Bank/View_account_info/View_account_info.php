@@ -1,10 +1,6 @@
 <?php
 
-$conn = new mysqli('localhost', 'username', 'password', 'bank1_db');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+@require '../connectserver.php';
 session_start();
 if (isset($_SESSION['account_number'])) {
     $account_number = $_SESSION['account_number']; //if available
@@ -43,3 +39,4 @@ $result = $conn->query($sql);
 <?php
 $conn->close();
 ?>
+
