@@ -1,8 +1,6 @@
 <?php
-$conn = new mysqli('localhost', 'username', 'password', 'bank1_db');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+@require '../connectserver.php';
+
 // transaction history of bank
 $sql = "SELECT * FROM transaction ORDER BY timestamp DESC";
 $result = $conn->query($sql);
