@@ -41,6 +41,7 @@
 - **Deposit**: Add funds to a customer account.
 - **Withdraw**: Withdraw funds from a customer account.
 - **Fund Transfer**: Transfer funds between accounts within the bank.
+- **View info**: employee can view user details.
 - **Loan Approval**: Review and approve or deny loan requests.
 - **User Approval**: Approve or reject user account requests.
 - **Loan Calculator**: Calculate loan amounts, interest, and repayment schedules.
@@ -66,7 +67,7 @@
 | Table Name        | Description                                           |
 |-------------------|-------------------------------------------------------|
 | **Customer**      | Stores customer details, including status and balance |
-| **Account**       | Stores only approved bank customer info                | 
+| **Account**       | Stores only approved bank customer info               | 
 | **Loan**          | Manages loan requests and approvals                   |
 | **Transaction**   | Records all transactions with unique reference IDs    |
 | **Donation**      | Logs donations made by customers                      |
@@ -94,7 +95,6 @@ CREATE TABLE customer (
     NID VARCHAR(10) UNIQUE,
     address VARCHAR(255) NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    balance DECIMAL(18, 2) DEFAULT 0.00,
     status TINYINT(1) NOT NULL
 );
 
@@ -103,9 +103,9 @@ CREATE TABLE customer (
 ### <h3>Account</h3>
 
 ```sql
--- Customer Table
+-- Account Table
 CREATE TABLE account (
-    account_number VARCHAR(12) NOT NULL,
+    account_number VARCHAR(12) NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     DOB DATE NOT NULL,
