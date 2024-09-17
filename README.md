@@ -105,13 +105,14 @@ CREATE TABLE customer (
 ```sql
 -- Customer Table
 CREATE TABLE account (
-    account_number VARCHAR(12) NOT NULL FOREIGN KEY,
+    account_number VARCHAR(12) NOT NULL,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     DOB DATE NOT NULL,
     NID VARCHAR(10) UNIQUE,
     balance DECIMAL(18, 2) DEFAULT 0.00,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (account_number) REFERENCES customer(account_number)
 );
 
 ```
