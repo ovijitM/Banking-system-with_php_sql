@@ -22,12 +22,13 @@
 ### <h3>Tables</h3>
 
 1. **Customer Table**: Stores all customer details, including approved and pending accounts.
-2. **Loan Table**: Stores details about loan requests and approvals with unique loan account numbers.
-3. **Transaction Table**: Records all transactions with unique reference IDs for each.
-4. **Donation Table**: Stores details of donations made by customers.
-5. **Complain Box Table**: Stores complaints submitted by customers.
-6. **Vault Table**: Holds the balance of the bank's vault.
-7. **Stuff Table**: bank admins are login and their info is store here.
+2. **Account Table** : Store only Bank customer info.
+3. **Loan Table**: Stores details about loan requests and approvals with unique loan account numbers.
+4. **Transaction Table**: Records all transactions with unique reference IDs for each.
+5. **Donation Table**: Stores details of donations made by customers.
+6. **Complain Box Table**: Stores complaints submitted by customers.
+7. **Vault Table**: Holds the balance of the bank's vault.
+8. **Stuff Table**: bank admins are login and their info is store here.
 
 ---
 
@@ -65,6 +66,7 @@
 | Table Name        | Description                                           |
 |-------------------|-------------------------------------------------------|
 | **Customer**      | Stores customer details, including status and balance |
+| **Account**       | Stores only approved bank customer info                | 
 | **Loan**          | Manages loan requests and approvals                   |
 | **Transaction**   | Records all transactions with unique reference IDs    |
 | **Donation**      | Logs donations made by customers                      |
@@ -94,6 +96,22 @@ CREATE TABLE customer (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     balance DECIMAL(18, 2) DEFAULT 0.00,
     status TINYINT(1) NOT NULL
+);
+
+```
+
+### <h3>Account</h3>
+
+```sql
+-- Customer Table
+CREATE TABLE account (
+    account_number VARCHAR(12) NOT NULL FOREIGN KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    DOB DATE NOT NULL,
+    NID VARCHAR(10) UNIQUE,
+    balance DECIMAL(18, 2) DEFAULT 0.00,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 ```
