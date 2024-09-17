@@ -36,9 +36,14 @@ if ($result->num_rows > 0) {
                 <input type='hidden' name='account_number' value='$accountNumber'>
                 <button type='submit'>Send Money</button>
             </form>
+            <form action='../Transaction_history/user_transaction_history.php' method='post'>
+                <input type='hidden' name='account_number' value='$accountNumber'>
+                <button type='submit'>View Transiction History</button>
+            </form>
             <form action='../../bank.php' method='post'>
                 <button type='submit'>LOGOUT</button>
             </form>
+            
         </div>
     </body>
     </html>";
@@ -46,4 +51,3 @@ if ($result->num_rows > 0) {
     echo "<p class='error'>Invalid account number or password</p>";
 }
 ?>
-

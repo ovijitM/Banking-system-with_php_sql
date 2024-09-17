@@ -1,5 +1,3 @@
-
-
 // @require "connectserver.php";
 
 // $accountNumber = $_POST['id_number'];
@@ -30,7 +28,7 @@
         <form action='../User_approval/User_request.php'>
             <button type='submit'>User request</button>
         </form>
-        <form action='./view_info/view_info.php'>
+        <form action='../View_account_info/search.php'>
             <button type='submit'>View Info</button>
         </form>
         <form action='./fund_transfer/transfer.php'>
@@ -42,7 +40,7 @@
         <form action='./withdraw/withdraw.php'>
             <button type='submit'>Withdraw</button>
         </form>
-        <form action='./history/transactions.php'>
+        <form action='../Transaction_history/bank_transaction_history.php'>
             <button type='submit'>View Transactions</button>
         </form>
         <form action='../bank.php' method='post'>

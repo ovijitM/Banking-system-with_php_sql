@@ -1,11 +1,8 @@
 <?php
-$conn = new mysqli('localhost', 'username', 'password', 'bank1_db');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
+@require "../connectserver.php";
 session_start();
-$account_number = $_SESSION['account_number'];
+$account_number = $_POST['account_number'];
 // Get history of login user
 $sql = "SELECT * FROM transaction 
         WHERE from_account = '$account_number' OR to_account = '$account_number' 
