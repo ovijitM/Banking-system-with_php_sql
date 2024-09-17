@@ -4,19 +4,23 @@ require_once '../connectserver.php';
 $accountNumber = $_POST['account_number'];
 $password = $_POST['password'];
 
+
 $sql = "SELECT * FROM customer WHERE account_number = '$accountNumber' AND password = '$password'";
 $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
+$row = $result->fetch_assoc();
+if ($row['status'] == 1) {
+    $sql = "SELECT * FROM account WHERE account_number = '$accountNumber'";
+    $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    $name = $row["username"];
-    $email = $row["email"];
-    $account = $row["account_number"];
-    $balance = $row["balance"];
-    $birth = $row["DOB"];
+    if ($result->num_rows > 0) {
+        $name = $row["username"];
+        $email = $row["email"];
+        $account = $row["account_number"];
+        $balance = $row["balance"];
+        $birth = $row["DOB"];
 
 
-    echo "<!DOCTYPE html>
+        echo "<!DOCTYPE html>
     <html lang='en'>
     <head>
         <meta charset='UTF-8'>
@@ -47,7 +51,9 @@ if ($result->num_rows > 0) {
         </div>
     </body>
     </html>";
+    } else {
+        echo "<p class='error'>Invalid account number or password</p>";
+    }
 } else {
-    echo "<p class='error'>Invalid account number or password</p>";
+    echo "<h1>Your request is send and it will review by our employee kindly contact with the bank</h1>";
 }
-?>

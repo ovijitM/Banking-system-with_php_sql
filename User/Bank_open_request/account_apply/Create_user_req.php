@@ -16,7 +16,6 @@ $password = $_POST['password'];
 $DOB = $_POST['birth'];
 $NID = $_POST['nid'];
 $address = $_POST['address'];
-$balance= 0.00;
 $status = 0; 
 
 
@@ -36,8 +35,8 @@ if (!ctype_digit($NID) || strlen($NID) !== 10) {
 }
 
 
-$sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address, balance, status) 
-        VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$balance', '$status')";
+$sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address,status) 
+        VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$status')";
 
 global $conn;
 
