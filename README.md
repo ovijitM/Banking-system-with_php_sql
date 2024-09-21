@@ -121,8 +121,8 @@ CREATE TABLE account (
 ```sql
 -- Loan Table
 CREATE TABLE loan (
-    loan_id INT AUTO_INCREMENT PRIMARY KEY,
-    loan_account_number VARCHAR(15) UNIQUE NOT NULL,
+    loan_id INT AUTO_INCREMENT UNIQUE,
+    loan_account_number VARCHAR(15) PRIMARY KEY,
     account_number VARCHAR(12),
     username VARCHAR(50),
     cause VARCHAR(255),
