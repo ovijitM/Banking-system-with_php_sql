@@ -1,10 +1,18 @@
 <?php
 @require '../connectserver.php';
 
-// transaction history of bank
-$sql = "SELECT * FROM transaction ORDER BY timestamp DESC";
+$searchQuery = "";
+if (isset($_GET['search'])) {
+    $searchQuery = $_GET['search']; 
+}
+$sql = "SELECT * FROM transaction WHERE 
+            transaction_id LIKE '%$searchQuery%' 
+            OR reference_id LIKE '%$searchQuery%' 
+            OR from_account LIKE '%$searchQuery%' 
+            OR to_account LIKE '%$searchQuery%'
+        ORDER BY timestamp DESC";
+        
 $result = $conn->query($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +23,12 @@ $result = $conn->query($sql);
 </head>
 <body>
     <h2>Bank-Wide Transaction History</h2>
+    <form method="GET" action="">
+        <label for="search">Search by Transaction ID, Reference ID, or Account Number:</label>
+        <input type="text" id="search" name="search" placeholder="Enter search term" value="<?php echo htmlspecialchars($searchQuery); ?>">
+        <button type="submit">Search</button>
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -49,6 +63,7 @@ $result = $conn->query($sql);
     </table>
 </body>
 </html>
+
 <?php
 $conn->close();
 ?>
