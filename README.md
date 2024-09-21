@@ -129,7 +129,7 @@ CREATE TABLE loan (
     amount DECIMAL(18, 2),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     status TINYINT(1) NOT NULL ,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -143,10 +143,10 @@ CREATE TABLE transaction (
     from_account VARCHAR(12),
     to_account VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer')),
+    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer', 'send_money')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (from_account) REFERENCES customer(account_number),
-    FOREIGN KEY (to_account) REFERENCES customer(account_number)
+    FOREIGN KEY (from_account) REFERENCES account(account_number),
+    FOREIGN KEY (to_account) REFERENCES account(account_number)
 );
 ```
 <h3>Donation Table</h3>
@@ -158,7 +158,7 @@ CREATE TABLE donation (
     username VARCHAR(50),
     account_number VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -172,7 +172,7 @@ CREATE TABLE complain_box (
     account_number VARCHAR(12),
     cause VARCHAR(255) NOT NULL,
     status TINYINT(1) NOT NULL,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 
 ```
