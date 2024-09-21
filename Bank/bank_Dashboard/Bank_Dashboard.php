@@ -43,6 +43,9 @@
         <form action='../Transaction_history/bank_transaction_history.php'>
             <button type='submit'>View Transactions</button>
         </form>
+        <form action='../Loan_approval/staff_see_request.php'>
+            <button type='submit'>view loan applications</button>
+        </form>
         <form action='../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
