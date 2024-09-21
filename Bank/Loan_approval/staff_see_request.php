@@ -1,6 +1,15 @@
 <?php
-include '../User/loan_apply/conection.php';// Make sure this file is named correctly and included
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "echo_bank";
 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 // Function to manually escape HTML
 function escapeHtml($string) {
     $search = ['&', '<', '>', '"', "'"];
@@ -40,7 +49,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
 
             // If approved, deduct from vault and add to customer balance
             if ($status === 1) {
-                $stmt = $conn->prepare("UPDATE vault SET balance_electric = balance_electric - ? WHERE muster_account = ?");
+                $stmt = $conn->prepare("UPDATE vault SET balance_electric = balance_electric - ? WHERE master_account = ?");
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
@@ -53,7 +62,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 }
 
                 // Update customer's balance
-                $stmt = $conn->prepare("UPDATE customer SET balance = balance + ? WHERE account_number = ?");
+                $stmt = $conn->prepare("UPDATE account SET balance = balance + ? WHERE account_number = ?");
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
