@@ -182,7 +182,7 @@ CREATE TABLE complain_box (
 ```sql
 -- Vault Table
 CREATE TABLE vault (
-    muster_account VARCHAR(12) not null,
+    master_account VARCHAR(12) not null,
     balance_cash DECIMAL(18, 2) NOT NULL,
     balance_electric DECIMAL(18, 2) NOT NULL
 );
