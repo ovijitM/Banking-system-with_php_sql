@@ -1,37 +1,30 @@
 <?php
-session_start();
 require_once '../connectserver.php';
 
-// Check if account number and password are provided
-if (isset($_POST['account_number']) && isset($_POST['password'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $accountNumber = $_POST['account_number'];
     $password = $_POST['password'];
 
-    // check if account number and password are valid
+  
     $sql = "SELECT * FROM customer WHERE account_number = '$accountNumber' AND password = '$password'";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
 
         if ($row['status'] == 1) {
-            // Store account number in session
-            $_SESSION['account_number'] = $accountNumber;
-
-            
+            // Fetch account details
             $sql = "SELECT * FROM account WHERE account_number = '$accountNumber'";
-            $result = $conn->query($sql);
+            $result = mysqli_query($conn, $sql);
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
                 $name = $row["username"];
                 $email = $row["email"];
                 $account = $row["account_number"];
                 $balance = $row["balance"];
                 $birth = $row["DOB"];
 
-               
                 echo "<!DOCTYPE html>
                 <html lang='en'>
                 <head>
@@ -45,21 +38,19 @@ if (isset($_POST['account_number']) && isset($_POST['password'])) {
                         <h1>Hi $name, welcome to the bank</h1>
                         <h2>Account number: $account<br></h2>
                         <h2>Account holder name: $name<br></h2>
-                        <h2>Account holder email: $email<br></h2>
-                        <h2>Account holder birth date: $birth<br></h2>
+                        <h2>Account holder email: $email <br></h2>
+                        <h2>Account holder birth date: $birth <br></h2>
                         <h2>Account Balance: $balance<br></h2>
-
                         <form action='../Send_money/send_money.php' method='POST'>
                             <input type='hidden' name='account_number' value='$accountNumber'>
                             <button type='submit'>Send Money</button>
                         </form>
-
-                        <form action='../Transaction_history/user_transaction_history.php' method='post'>
+                        <form action='../Transaction_history/user_transaction_history.php' method='POST'>
                             <input type='hidden' name='account_number' value='$accountNumber'>
+                            
                             <button type='submit'>View Transaction History</button>
                         </form>
-
-                        <form action='../../bank.php' method='post'>
+                        <form action='../../bank.php' method='POST'>
                             <button type='submit'>LOGOUT</button>
                         </form>
                     </div>
@@ -74,9 +65,5 @@ if (isset($_POST['account_number']) && isset($_POST['password'])) {
     } else {
         echo "<p class='error'>Invalid account number or password.</p>";
     }
-} else {
-    echo "<p class='error'>Please enter your account number and password.</p>";
 }
-
-$conn->close();
 ?>
