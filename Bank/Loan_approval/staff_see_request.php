@@ -1,5 +1,5 @@
 <?php
-include 'conection.php'; // Include the correct file with the database connection
+include 'conection.php'; // Make sure this file is named correctly and included
 
 // Function to manually escape HTML
 function escapeHtml($string) {
@@ -13,7 +13,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     $loan_id = $_POST['loan_id'];
     $action = $_POST['action'];
     $status = $action === 'approve' ? 1 : 0;
-    
+
     $conn->begin_transaction();
     try {
         // Fetch loan details
@@ -24,12 +24,12 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
         $stmt->bind_param("i", $loan_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             $loan_row = $result->fetch_assoc();
             $account_number = $loan_row['account_number'];
             $amount = $loan_row['amount'];
-            
+
             // Update loan status
             $stmt = $conn->prepare("UPDATE loan SET status = ? WHERE loan_id = ?");
             if (!$stmt) {
@@ -37,8 +37,21 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
             }
             $stmt->bind_param("ii", $status, $loan_id);
             $stmt->execute();
-            
+
+            // If approved, deduct from vault and add to customer balance
             if ($status === 1) {
+                $stmt = $conn->prepare("UPDATE vault SET balance_electric = balance_electric - ? WHERE muster_account = ?");
+                if (!$stmt) {
+                    throw new Exception("Prepare failed: " . $conn->error);
+                }
+                $muster_account = 10000000; // Vault account number
+                $stmt->bind_param("di", $amount, $muster_account);
+                $stmt->execute();
+
+                if ($stmt->affected_rows === 0) {
+                    throw new Exception("No rows updated in vault table.");
+                }
+
                 // Update customer's balance
                 $stmt = $conn->prepare("UPDATE customer SET balance = balance + ? WHERE account_number = ?");
                 if (!$stmt) {
@@ -46,7 +59,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 }
                 $stmt->bind_param("ds", $amount, $account_number);
                 $stmt->execute();
-                
+
                 if ($stmt->affected_rows === 0) {
                     throw new Exception("No rows updated in customer table.");
                 }
@@ -101,15 +114,14 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM loan";
+            $sql = "SELECT loan_id, account_number, username, cause, amount, timestamp, status FROM loan";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // Output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . escapeHtml($row["loan_id"]) . "</td>";
-                    echo "<td>" . escapeHtml($row["loan_account_number"]) . "</td>";
+                    echo "<td>" . escapeHtml($row["account_number"]) . "</td>";
                     echo "<td>" . escapeHtml($row["username"]) . "</td>";
                     echo "<td>" . escapeHtml($row["cause"]) . "</td>";
                     echo "<td>" . escapeHtml($row["amount"]) . "</td>";
