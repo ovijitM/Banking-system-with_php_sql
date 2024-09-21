@@ -7,7 +7,7 @@ $recipient_status = "";
 
 // Ensure the account number is available
 if (!isset($_POST['account_number'])) {
-    header("Location: ../User_account/sign_in.php");
+    header("Location: ../SIgn_in/User_login.php");
     exit();
 }
 
