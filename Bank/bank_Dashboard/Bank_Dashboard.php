@@ -22,7 +22,7 @@
     <h1>Hi, Welcome to the Bank</h1>
     <h2>Choose Your Functions</h2>
     <div class='button-container'>
-        <form action='./create_account/create.php'>
+        <form action='../Create_account/Create_account.php'>
             <button type='submit'>Create Account</button>
         </form>
         <form action='../User_approval/User_request.php'>
