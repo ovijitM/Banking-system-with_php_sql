@@ -1,5 +1,5 @@
 <?php
-include 'conection.php'; // Make sure this file is named correctly and included
+include '../User/loan_apply/conection.php';// Make sure this file is named correctly and included
 
 // Function to manually escape HTML
 function escapeHtml($string) {
