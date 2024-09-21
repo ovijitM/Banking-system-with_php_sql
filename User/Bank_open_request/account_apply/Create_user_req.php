@@ -16,7 +16,6 @@ $password = $_POST['password'];
 $DOB = $_POST['birth'];
 $NID = $_POST['nid'];
 $address = $_POST['address'];
-$balance= 0.00;
 $status = 0; 
 
 
@@ -32,12 +31,18 @@ if ($age < 18) {
 
 if (!ctype_digit($NID) || strlen($NID) !== 10) {
     echo "Error: NID must be exactly 10 digits long.";
-    exit;
 }
 
+$nid_check = "SELECT username , account_number FROM account WHERE NID = '$NID'";
+$nid_result = $conn->query($nid_check);
 
-$sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address, balance, status) 
-        VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$balance', '$status')";
+if ($nid_result->num_rows > 0) {
+    $nid_check_row = $nid_result->fetch_assoc();
+    echo "Error: This NID is already used";
+}
+
+$sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address,status) 
+        VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$status')";
 
 global $conn;
 

@@ -22,11 +22,13 @@
 ### <h3>Tables</h3>
 
 1. **Customer Table**: Stores all customer details, including approved and pending accounts.
-2. **Loan Table**: Stores details about loan requests and approvals with unique loan account numbers.
-3. **Transaction Table**: Records all transactions with unique reference IDs for each.
-4. **Donation Table**: Stores details of donations made by customers.
-5. **Complain Box Table**: Stores complaints submitted by customers.
-6. **Vault Table**: Holds the balance of the bank's vault.
+2. **Account Table** : Store only Bank customer info.
+3. **Loan Table**: Stores details about loan requests and approvals with unique loan account numbers.
+4. **Transaction Table**: Records all transactions with unique reference IDs for each.
+5. **Donation Table**: Stores details of donations made by customers.
+6. **Complain Box Table**: Stores complaints submitted by customers.
+7. **Vault Table**: Holds the balance of the bank's vault.
+8. **Stuff Table**: bank admins are login and their info is store here.
 
 ---
 
@@ -39,6 +41,7 @@
 - **Deposit**: Add funds to a customer account.
 - **Withdraw**: Withdraw funds from a customer account.
 - **Fund Transfer**: Transfer funds between accounts within the bank.
+- **View info**: employee can view user details.
 - **Loan Approval**: Review and approve or deny loan requests.
 - **User Approval**: Approve or reject user account requests.
 - **Loan Calculator**: Calculate loan amounts, interest, and repayment schedules.
@@ -64,41 +67,69 @@
 | Table Name        | Description                                           |
 |-------------------|-------------------------------------------------------|
 | **Customer**      | Stores customer details, including status and balance |
+| **Account**       | Stores only approved bank customer info               | 
 | **Loan**          | Manages loan requests and approvals                   |
 | **Transaction**   | Records all transactions with unique reference IDs    |
 | **Donation**      | Logs donations made by customers                      |
 | **Complain Box**  | Stores customer complaints                            |
 | **Vault**         | Holds the bank's total balance                        |
+| **Stuff**         | Stuffs data is store and stuff logins                 |
+
+
+### <h3> Create database <h3>
+```
+    Create database echo_bank;
+    use echo_bank;
+```
 
 ### <h3>Customer Table</h3>
 
 ```sql
 -- Customer Table
 CREATE TABLE customer (
-    account_number VARCHAR(10) PRIMARY KEY,
+    account_number VARCHAR(12) NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     DOB DATE NOT NULL,
-    NID VARCHAR(10) UNIQUE NOT NULL,
+    NID VARCHAR(10) UNIQUE,
+    address VARCHAR(255) NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    balance DECIMAL(18, 2) DEFAULT 0.00,
-    status VARCHAR(20) NOT NULL CHECK (status IN ('pending', 'approved'))
+    status TINYINT(1) NOT NULL
 );
+
+```
+
+### <h3>Account</h3>
+
+```sql
+-- Account Table
+CREATE TABLE account (
+    account_number VARCHAR(12) NOT NULL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    DOB DATE NOT NULL,
+    NID VARCHAR(10) UNIQUE,
+    balance DECIMAL(18, 2) DEFAULT 0.00,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+);
+
 ```
 <h3>Loan Table</h3>
 
 ```sql
 -- Loan Table
 CREATE TABLE loan (
-    loan_id INT AUTO_INCREMENT PRIMARY KEY,
-    loan_account_number VARCHAR(15) UNIQUE NOT NULL,
-    account_number VARCHAR(10),
+    loan_id INT AUTO_INCREMENT UNIQUE,
+    loan_account_number VARCHAR(15) PRIMARY KEY,
+    account_number VARCHAR(12),
     username VARCHAR(50),
     cause VARCHAR(255),
     amount DECIMAL(18, 2),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20) CHECK (status IN ('pending', 'approved')),
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    status TINYINT(1) NOT NULL ,
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -107,15 +138,15 @@ CREATE TABLE loan (
 ```sql
 -- Transaction Table
 CREATE TABLE transaction (
-    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-    reference_id VARCHAR(20) UNIQUE NOT NULL,
-    from_account VARCHAR(10),
-    to_account VARCHAR(10),
+    transaction_id INT AUTO_INCREMENT UNIQUE,
+    reference_id VARCHAR(10) PRIMARY KEY,
+    from_account VARCHAR(12),
+    to_account VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer')),
+    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer', 'send_money')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (from_account) REFERENCES customer(account_number),
-    FOREIGN KEY (to_account) REFERENCES customer(account_number)
+    FOREIGN KEY (from_account) REFERENCES account(account_number),
+    FOREIGN KEY (to_account) REFERENCES account(account_number)
 );
 ```
 <h3>Donation Table</h3>
@@ -125,9 +156,9 @@ CREATE TABLE transaction (
 CREATE TABLE donation (
     donation_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
-    account_number VARCHAR(10),
+    account_number VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -138,10 +169,10 @@ CREATE TABLE donation (
 CREATE TABLE complain_box (
     complain_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
-    account_number VARCHAR(10),
+    account_number VARCHAR(12),
     cause VARCHAR(255) NOT NULL,
-    status VARCHAR(20) CHECK (status IN ('resolved', 'pending')),
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    status TINYINT(1) NOT NULL,
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 
 ```
@@ -151,8 +182,20 @@ CREATE TABLE complain_box (
 ```sql
 -- Vault Table
 CREATE TABLE vault (
-    vault_id INT PRIMARY KEY AUTO_INCREMENT,
-    balance DECIMAL(18, 2) NOT NULL
+    master_account VARCHAR(12) not null,
+    balance_cash DECIMAL(18, 2) NOT NULL,
+    balance_electric DECIMAL(18, 2) NOT NULL
+);
+```
+
+<h3>Stuff/Admin Table</h3>
+they have default value for presentation  id: 12345 pass: admin
+
+```sql
+Create Table stuff (
+    stuff_id int(5) ,
+    stuff_name varchar(255),
+    password varchar(50)
 );
 ```
 
