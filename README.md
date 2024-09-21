@@ -178,6 +178,7 @@ CREATE TABLE complain_box (
 ```
 
 <h3>Vault Table</h3>
+<h2> use and set the master_account number 1234567890 </h2>
 
 ```sql
 -- Vault Table
