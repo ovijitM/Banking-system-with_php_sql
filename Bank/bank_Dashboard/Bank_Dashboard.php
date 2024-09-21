@@ -31,7 +31,7 @@
         <form action='../View_account_info/search.php'>
             <button type='submit'>View Info</button>
         </form>
-        <form action='./fund_transfer/transfer.php'>
+        <form action='../Fund_transfer/fund_transfer.php'>
             <button type='submit'>Transfer Funds</button>
         </form>
         <form action='./deposit/deposit.php'>
