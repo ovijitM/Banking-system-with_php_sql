@@ -47,7 +47,8 @@ if ($result->num_rows > 0) {
                         <input type='hidden' name='account_number' value='$accountNumber'>
                         <button type='submit'>View Transaction History</button>
                     </form>
-                    <a href='../loan_apply/login.php'>loan</a>
+                    <a href='../loan_apply/login.php'>loan</a> <br>
+                    <a href='../loan_apply/loan_de.php'>loan details</a>
                     <form action='../../bank.php' method='post'>
                         <button type='submit'>LOGOUT</button>
                     </form>
