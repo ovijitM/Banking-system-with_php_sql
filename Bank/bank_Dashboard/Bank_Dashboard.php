@@ -22,7 +22,7 @@
     <h1>Hi, Welcome to the Bank</h1>
     <h2>Choose Your Functions</h2>
     <div class='button-container'>
-        <form action='./create_account/create.php'>
+        <form action='../Create_account/Create_account.php'>
             <button type='submit'>Create Account</button>
         </form>
         <form action='../User_approval/User_request.php'>
@@ -43,12 +43,10 @@
         <form action='../Transaction_history/bank_transaction_history.php'>
             <button type='submit'>View Transactions</button>
         </form>
-        <form action='../Loan_approval/staff_see_request.php'>
-            <button type='submit'>view loan applications</button>
-        </form>
         <form action='../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
+        <a href="../loan_approve/staff_see_request.php">loan approved</a>
     </div>
 </body>
 
