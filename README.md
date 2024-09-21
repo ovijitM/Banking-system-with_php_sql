@@ -138,8 +138,8 @@ CREATE TABLE loan (
 ```sql
 -- Transaction Table
 CREATE TABLE transaction (
-    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-    reference_id VARCHAR(10) UNIQUE NOT NULL,
+    transaction_id INT AUTO_INCREMENT UNIQUE,
+    reference_id VARCHAR(10) PRIMARY KEY,
     from_account VARCHAR(12),
     to_account VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
