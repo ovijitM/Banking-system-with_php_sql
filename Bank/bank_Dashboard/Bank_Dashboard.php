@@ -46,7 +46,7 @@
         <form action='../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
-        <a href="../loan_approve/staff_see_request.php">loan approved</a>
+        <a href="../Loan_approval/staff_see_request.php">loan approved</a>
     </div>
 </body>
 

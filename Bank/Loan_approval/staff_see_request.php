@@ -53,7 +53,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
-                $muster_account = 10000000; // Vault account number
+                $muster_account = 1234567890 ; // Vault account number
                 $stmt->bind_param("di", $amount, $muster_account);
                 $stmt->execute();
 
