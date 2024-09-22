@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($amount > 0 && $amount <= $vault_balance_cash) {
                 // Generate a random reference ID
                 $reference_id = '';
-                $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
+                $characters = '0123456789FGHIJ';
                 for ($i = 0; $i < 10; $i++) {
                     $reference_id .= $characters[rand(0, strlen($characters) - 1)];
                 }
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $vault_balance_cash = $vault_row['balance_cash'];
                     } else {
                         $fund_status = "Error fetching updated vault balance.";
-                        $vault_balance_cash = 0; // Handle the case where balance fetching fails
+                    
                     }
                 } else {
                     $transfer_status = "Error during transfer. Please try again.";
@@ -108,6 +108,11 @@ mysqli_close($conn);
 
         <button type="button" onclick="window.history.back();">Go Back</button>
         <input type="submit" value="Transfer">
+        <form action="../Bank_withdraw/withdraw.php" method="POST">
+        <button type="submit">withdraw</button>
     </form>
+    <form action="../Deposit/deposit.php" method="POST">
+    <button type="submit">Deposit</button>
+</form>
 </body>
 </html>

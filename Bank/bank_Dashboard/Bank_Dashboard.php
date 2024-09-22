@@ -34,10 +34,10 @@
         <form action='../Fund_transfer/fund_transfer.php'>
             <button type='submit'>Transfer Funds</button>
         </form>
-        <form action='./deposit/deposit.php'>
+        <form action='../Deposit/deposit.php'>
             <button type='submit'>Deposit</button>
         </form>
-        <form action='./withdraw/withdraw.php'>
+        <form action='../Bank_withdraw/withdraw.php'>
             <button type='submit'>Withdraw</button>
         </form>
         <form action='../Transaction_history/bank_transaction_history.php'>

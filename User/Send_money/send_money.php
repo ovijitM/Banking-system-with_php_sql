@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($amount > 0 && $amount <= $current_balance) {
                 // Generate a random reference ID
                 $reference_id = '';
-                $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVW';
+                $characters = '0123456789ABCDE';
                 for ($i = 0; $i < 10; $i++) {
                     $reference_id .= $characters[rand(0, strlen($characters) - 1)];
                 }
