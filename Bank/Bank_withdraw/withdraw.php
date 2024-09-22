@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
 
                     $balance_status = "Current Account Balance: $" . number_format($current_balance, 2);
-                    $vault_status = "Current Vault Balance: Cash: $" . number_format($vault_balance_cash, 2); 
+                     
                     
                 } else {
                     $withdrawal_status = "Error during withdrawal. Please try again.";
