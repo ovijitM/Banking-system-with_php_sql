@@ -1,10 +1,19 @@
 <?php
 @require '../connectserver.php';
 
+$masterAccountSql = "SELECT master_account FROM vault LIMIT 1";
+$masterAccountResult = $conn->query($masterAccountSql);
+$masterAccount = '';
+
+if ($masterAccountResult && $masterAccountResult->num_rows > 0) {
+    $masterAccountRow = $masterAccountResult->fetch_assoc();
+    $masterAccount = $masterAccountRow['master_account'];
+}
 $searchQuery = "";
 if (isset($_GET['search'])) {
     $searchQuery = $_GET['search']; 
 }
+
 $sql = "SELECT * FROM transaction WHERE 
             transaction_id LIKE '%$searchQuery%' 
             OR reference_id LIKE '%$searchQuery%' 
@@ -46,8 +55,8 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $from_account = $row['from_account'];
-                    if ($from_account == "" || $from_account == NULL) {
-                        $from_account = 'Vault Account'; 
+                    if (empty($from_account)) {
+                        $from_account = $masterAccount; 
                     }
 
                     echo "<tr>
@@ -72,5 +81,3 @@ $result = $conn->query($sql);
 <?php
 $conn->close();
 ?>
-
-
