@@ -18,6 +18,7 @@ function escapeHtml($string) {
 }
 
 // Handle loan status update
+// Handle loan status update
 if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     $loan_id = $_POST['loan_id'];
     $action = $_POST['action'];
@@ -26,7 +27,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     $conn->begin_transaction();
     try {
         // Fetch loan details
-        $stmt = $conn->prepare("SELECT account_number, amount FROM loan WHERE loan_id = ?");
+        $stmt = $conn->prepare("SELECT account_number, amount, status FROM loan WHERE loan_id = ?");
         if (!$stmt) {
             throw new Exception("Prepare failed: " . $conn->error);
         }
@@ -38,6 +39,12 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
             $loan_row = $result->fetch_assoc();
             $account_number = $loan_row['account_number'];
             $amount = $loan_row['amount'];
+            $current_status = $loan_row['status'];
+
+            // Check if loan is already approved
+            if ($current_status == 1 && $action === 'approve') {
+                throw new Exception("Loan has already been approved.");
+            }
 
             // Update loan status
             $stmt = $conn->prepare("UPDATE loan SET status = ? WHERE loan_id = ?");
@@ -53,7 +60,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
-                $muster_account = 1234567890 ; // Vault account number
+                $muster_account = 1234567890; // Vault account number
                 $stmt->bind_param("di", $amount, $muster_account);
                 $stmt->execute();
 
@@ -85,7 +92,6 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
