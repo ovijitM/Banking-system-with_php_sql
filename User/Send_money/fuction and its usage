@@ -1,0 +1,18 @@
+1.                 $reference_id = '';
+                $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVW';
+                for ($i = 0; $i < 10; $i++) {
+                    $reference_id .= $characters[rand(0, strlen($characters) - 1)];
+                }
+
+                this generates a 10 digit number+ letter reference id 
+
+how it works: 
+Defines a string $characters containing the possible characters that can be used in the reference_id. In this case, it includes:
+Numbers: 0-9
+Letters: A-W (it skips some letters like X, Y, and Z, though that may be intentional or just a typo).
+Starts a loop that runs 10 times. Each loop iteration will generate one character, eventually creating a 10-character ID.
+
+Inside the loop, this line does the main work:
+rand(0, strlen($characters) - 1) generates a random number between 0 and the length of $characters minus one (i.e., a valid index of the string).
+$characters[$index]: The character at the random index is selected.
+.=: The selected character is appended to $reference_id.
