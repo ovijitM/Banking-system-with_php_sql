@@ -50,6 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             
                             <button type='submit'>View Transaction History</button>
                         </form>
+                        <form action='../Complaint_box/Complaint_box.php' method='post'>
+                            <input type='hidden' name='account_number' value='$accountNumber'>
+                            <input type='hidden' name='username' value='$name'>
+                        <button type='submit'>Complaint box</button>
                         <form action='../../bank.php' method='POST'>
                             <button type='submit'>LOGOUT</button>
                         </form>
