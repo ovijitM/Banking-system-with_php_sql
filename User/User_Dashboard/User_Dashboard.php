@@ -48,7 +48,8 @@ if ($result->num_rows > 0) {
                         <button type='submit'>View Transaction History</button>
                     </form>
                     <a href='../loan_apply/login.php'>loan</a> <br>
-                    <a href='../loan_apply/loan_de.php'>loan details</a>
+                    <a href='../loan_apply/loan_de.php'>loan details</a><br>
+                    <a href='../Loan_Calculator/calculator.php'>loan Calculator</a>
                     <form action='../../bank.php' method='post'>
                         <button type='submit'>LOGOUT</button>
                     </form>
