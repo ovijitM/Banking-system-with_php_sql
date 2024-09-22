@@ -11,7 +11,7 @@ $sql = "SELECT * FROM transaction WHERE
             OR from_account LIKE '%$searchQuery%' 
             OR to_account LIKE '%$searchQuery%'
         ORDER BY timestamp DESC";
-        
+
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -45,14 +45,19 @@ $result = $conn->query($sql);
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $from_account = $row['from_account'];
+                    if ($from_account == "" || $from_account == NULL) {
+                        $from_account = 'Vault Account'; 
+                    }
+
                     echo "<tr>
-                            <td>{$row['transaction_id']}</td>
-                            <td>{$row['reference_id']}</td>
-                            <td>{$row['from_account']}</td>
-                            <td>{$row['to_account']}</td>
-                            <td>{$row['amount']}</td>
-                            <td>{$row['transaction_type']}</td>
-                            <td>{$row['timestamp']}</td>
+                            <td>" . $row['transaction_id'] . "</td>
+                            <td>" . $row['reference_id'] . "</td>
+                            <td>" . $from_account . "</td>
+                            <td>" . $row['to_account'] . "</td>
+                            <td>" . $row['amount'] . "</td>
+                            <td>" . $row['transaction_type'] . "</td>
+                            <td>" . $row['timestamp'] . "</td>
                           </tr>";
                 }
             } else {
@@ -67,3 +72,5 @@ $result = $conn->query($sql);
 <?php
 $conn->close();
 ?>
+
+
