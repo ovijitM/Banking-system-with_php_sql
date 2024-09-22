@@ -46,7 +46,7 @@ $vault_query = "SELECT balance_electric, balance_cash FROM vault WHERE master_ac
 $vault_result = $conn->query($vault_query);
 $vault_row = $vault_result->fetch_assoc();
 $balance_electric = $vault_row['balance_electric'];
-$balance_cash = $vault_row['balance_electric'];
+$balance_cash = $vault_row['balance_cash'];
 
 if ($balance_electric < $balance) {
     echo "Error: Vault does not have enough balance.";
@@ -55,11 +55,9 @@ if ($balance_electric < $balance) {
 
 $new_balance_electric = $balance_electric - $balance;
 $new_balance_cash = $balance_cash + $balance;
-$update_vault_electic = "UPDATE vault SET balance_electric = '$new_balance_electric' WHERE master_account = '1234567890'";
-$conn->query($update_vault_electric);
 
-$update_vault_cash = "UPDATE vault SET balance_cash = '$new_balance_cash' WHERE master_account = '1234567890'";
-$conn->query($update_vault_cash);
+$update_vault_query = " UPDATE vault SET balance_electric = $new_balance_electric, balance_cash = $new_balance_cash WHERE master_account = '1234567890'";
+$conn->query($update_vault_query);
 
 $sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address, status) 
         VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$status')";
