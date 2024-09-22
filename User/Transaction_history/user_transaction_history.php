@@ -1,14 +1,22 @@
 <?php
-
 @require "../connectserver.php";
 session_start();
+
+$masterAccountSql = "SELECT master_account FROM vault LIMIT 1";
+$masterAccountResult = $conn->query($masterAccountSql);
+$masterAccount = '';
+
+if ($masterAccountResult && $masterAccountResult->num_rows > 0) {
+    $masterAccountRow = $masterAccountResult->fetch_assoc();
+    $masterAccount = $masterAccountRow['master_account'];
+}
+
 $account_number = $_POST['account_number'];
 // Get history of login user
 $sql = "SELECT * FROM transaction 
         WHERE from_account = '$account_number' OR to_account = '$account_number' 
         ORDER BY timestamp DESC";
 $result = $conn->query($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,13 +43,10 @@ $result = $conn->query($sql);
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    
-                    // Manually check if from_account is empty or NULL
                     $from_account = $row['from_account'];
                     if (empty($from_account)) {
-                        $from_account = 'Vault Account'; // Set 'Vault Account' if from_account is empty
+                        $from_account = $masterAccount; 
                     }
-
                     echo "<tr>
                             <td>{$row['transaction_id']}</td>
                             <td>{$row['reference_id']}</td>
