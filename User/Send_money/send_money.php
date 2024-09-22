@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $add_recipient = mysqli_query($conn, "UPDATE account SET balance = balance + $amount WHERE account_number = '$recipient_account'");
 
                 // Record the transaction
-                $transaction_type = 'Send money';
+                $transaction_type = 'Send_money';
                 $record_transaction = mysqli_query($conn, 
                     "INSERT INTO transaction (from_account, transaction_type, amount, to_account, reference_id) 
                      VALUES ('$account_number', '$transaction_type', $amount, '$recipient_account', '$reference_id')");
