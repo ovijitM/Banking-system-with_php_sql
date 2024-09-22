@@ -35,10 +35,17 @@ $result = $conn->query($sql);
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    
+                    // Manually check if from_account is empty or NULL
+                    $from_account = $row['from_account'];
+                    if (empty($from_account)) {
+                        $from_account = 'Vault Account'; // Set 'Vault Account' if from_account is empty
+                    }
+
                     echo "<tr>
                             <td>{$row['transaction_id']}</td>
                             <td>{$row['reference_id']}</td>
-                            <td>{$row['from_account']}</td>
+                            <td>{$from_account}</td>
                             <td>{$row['to_account']}</td>
                             <td>{$row['amount']}</td>
                             <td>{$row['transaction_type']}</td>
