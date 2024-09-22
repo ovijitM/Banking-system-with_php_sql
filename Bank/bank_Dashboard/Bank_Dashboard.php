@@ -43,6 +43,9 @@
         <form action='../Transaction_history/bank_transaction_history.php'>
             <button type='submit'>View Transactions</button>
         </form>
+        <form action='../Vault/Vault.php'>
+            <button type='submit'>View vault</button>
+        </form>
         <form action='../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>

@@ -42,10 +42,11 @@ if ($nid_result->num_rows > 0) {
 }
 
 
-$vault_query = "SELECT balance_electric FROM vault WHERE master_account = '1234567890'";
+$vault_query = "SELECT balance_electric, balance_cash FROM vault WHERE master_account = '1234567890'";
 $vault_result = $conn->query($vault_query);
 $vault_row = $vault_result->fetch_assoc();
 $balance_electric = $vault_row['balance_electric'];
+$balance_cash = $vault_row['balance_electric'];
 
 if ($balance_electric < $balance) {
     echo "Error: Vault does not have enough balance.";
@@ -53,8 +54,12 @@ if ($balance_electric < $balance) {
 }
 
 $new_balance_electric = $balance_electric - $balance;
-$update_vault_query = "UPDATE vault SET balance_electric = '$new_balance_electric' WHERE master_account = '1234567890'";
-$conn->query($update_vault_query);
+$new_balance_cash = $balance_cash + $balance;
+$update_vault_electic = "UPDATE vault SET balance_electric = '$new_balance_electric' WHERE master_account = '1234567890'";
+$conn->query($update_vault_electric);
+
+$update_vault_cash = "UPDATE vault SET balance_cash = '$new_balance_cash' WHERE master_account = '1234567890'";
+$conn->query($update_vault_cash);
 
 $sql = "INSERT INTO customer (account_number, username, email, password, DOB, NID, address, status) 
         VALUES ('$accountNumber', '$username', '$email', '$password', '$DOB', '$NID', '$address', '$status')";
@@ -69,9 +74,8 @@ if ($conn->query($sql) === TRUE) {
     echo "<h1>Please provide the account number and password to the user</h1>";
     $sql = "INSERT INTO account(account_number, username, email, DOB, NID, balance) 
         VALUES ('$accountNumber', '$username', '$email', '$DOB', '$NID', '$balance')";
-    if ($conn->query($sql) === TRUE){
-        echo "";
-    }
+    $conn->query($sql);
 } else {
     echo "Something went wrong, please try again later.";
 }
+?>
