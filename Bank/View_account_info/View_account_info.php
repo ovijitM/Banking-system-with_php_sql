@@ -11,7 +11,11 @@ if (isset($_SESSION['account_number'])) {
     exit();
 }
 
-$sql = "SELECT * FROM customer WHERE account_number = '$account_number'";
+$sql = "SELECT c.account_number, c.username, c.email, c.DOB, c.status, a.balance 
+        FROM customer c 
+        JOIN account a ON c.account_number = a.account_number
+        WHERE c.account_number = '$account_number'";
+
 $result = $conn->query($sql);
 
 ?>
@@ -31,7 +35,7 @@ $result = $conn->query($sql);
         echo "<p>Account Holder Name: {$row['username']}</p>";
         echo "<p>Email: {$row['email']}</p>";
         echo "<p>Date of Birth: {$row['DOB']}</p>";
-        echo "<p>Balance: {$row['balance']}</p>";
+        echo "<p>Balance: {$row['balance']}</p>"; 
         echo "<p>Account Status: ";
         if ($row['status'] == 1) {
             echo "Approved";
