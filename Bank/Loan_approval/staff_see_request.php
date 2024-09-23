@@ -52,7 +52,7 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
-                $master_account = 10000000; 
+                $master_account = 1234567890; 
                 $stmt->bind_param("di", $amount, $master_account);
                 $stmt->execute();
 
