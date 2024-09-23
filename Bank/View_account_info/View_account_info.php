@@ -32,7 +32,14 @@ $result = $conn->query($sql);
         echo "<p>Email: {$row['email']}</p>";
         echo "<p>Date of Birth: {$row['DOB']}</p>";
         echo "<p>Balance: {$row['balance']}</p>";
-        echo "<p>Account Status: " . ($row['status'] == 1 ? 'Approved' : 'Pending') . "</p>";
+        echo "<p>Account Status: ";
+        if ($row['status'] == 1) {
+            echo "Approved";
+        } else {
+            echo "Pending";
+        }
+        echo "</p>";
+
     } else {
         echo "<p>No account found for Account Number: $account_number</p>";
     }
