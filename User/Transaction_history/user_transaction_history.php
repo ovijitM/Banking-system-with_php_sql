@@ -29,7 +29,6 @@ $result = $conn->query($sql);
     <table>
         <thead>
             <tr>
-                <th>Transaction ID</th>
                 <th>Reference ID</th>
                 <th>From Account</th>
                 <th>To Account</th>
