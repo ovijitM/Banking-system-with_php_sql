@@ -54,6 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type='hidden' name='account_number' value='$accountNumber'>
                             <input type='hidden' name='username' value='$name'>
                         <button type='submit'>Complaint box</button>
+                        <form action='../Donation/donation.php' method='post'>
+                            <input type='hidden' name='account_number' value='$accountNumber'>
+                            <button type='submit'>Donate</button>
+                        </form>
                         <form action='../../bank.php' method='POST'>
                             <button type='submit'>LOGOUT</button>
                         </form>
