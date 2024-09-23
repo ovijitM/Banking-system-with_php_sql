@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form action='../Complaint_box/Complaint_box.php' method='post'>
                             <input type='hidden' name='account_number' value='$accountNumber'>
                             <input type='hidden' name='username' value='$name'>
+                        </form>
                         <button type='submit'>Complaint box</button>
                         <form action='../Donation/donation.php' method='post'>
                             <input type='hidden' name='account_number' value='$accountNumber'>
