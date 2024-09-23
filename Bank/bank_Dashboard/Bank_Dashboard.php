@@ -11,6 +11,19 @@
 // }
 
 
+// @require "connectserver.php";
+
+// $accountNumber = $_POST['id_number'];
+// $password = $_POST['password'];
+
+// $sql = "SELECT * FROM staff WHERE user_id = '$accountNumber' AND password = '$password'";
+// $result = $conn->query($sql);
+
+// if ($result->num_rows > 0) {
+//     echo "";
+// }
+
+
 <!DOCTYPE html>
 
 <head>
@@ -46,7 +59,8 @@
         <form action='../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
-        <a href="../Loan_approval/staff_see_request.php">loan approved</a>
+        <a href="../Loan_approval/staff_see_request.php">loan approved</a><br>
+        <a href="../Loan_approval/loan_de.php"> User loan Details</a>
     </div>
 </body>
 
