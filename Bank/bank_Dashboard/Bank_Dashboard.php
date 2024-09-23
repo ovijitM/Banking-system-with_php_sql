@@ -43,6 +43,9 @@
         <form action='../Transaction_history/bank_transaction_history.php'>
             <button type='submit'>View Transactions</button>
         </form>
+        <form action='../Complaints/employee_complaints.php'>
+            <button type='submit'>Complaint list</button>
+        </form>
         <form action='../Vault/Vault.php'>
             <button type='submit'>View vault</button>
         </form>
