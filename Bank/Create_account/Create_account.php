@@ -36,6 +36,10 @@
             <input type="number" id="balance" name="balance" required>
         </div>
         <button type="submit">Create Account</button>
+<button onclick="window.history.back();">Go Back</button>
+<form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+
     </form>
 </body>
 </html>

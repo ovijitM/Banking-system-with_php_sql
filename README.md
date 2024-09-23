@@ -121,15 +121,15 @@ CREATE TABLE account (
 ```sql
 -- Loan Table
 CREATE TABLE loan (
-    loan_id INT AUTO_INCREMENT PRIMARY KEY,
-    loan_account_number VARCHAR(15) UNIQUE NOT NULL,
+    loan_id INT AUTO_INCREMENT UNIQUE,
+    loan_account_number VARCHAR(15) PRIMARY KEY,
     account_number VARCHAR(12),
     username VARCHAR(50),
     cause VARCHAR(255),
     amount DECIMAL(18, 2),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     status TINYINT(1) NOT NULL ,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -138,15 +138,15 @@ CREATE TABLE loan (
 ```sql
 -- Transaction Table
 CREATE TABLE transaction (
-    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-    reference_id VARCHAR(10) UNIQUE NOT NULL,
+    transaction_id INT AUTO_INCREMENT UNIQUE,
+    reference_id VARCHAR(10) PRIMARY KEY,
     from_account VARCHAR(12),
     to_account VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer')),
+    transaction_type VARCHAR(20) NOT NULL CHECK (transaction_type IN ('deposit', 'withdrawal', 'transfer', 'send_money')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (from_account) REFERENCES customer(account_number),
-    FOREIGN KEY (to_account) REFERENCES customer(account_number)
+    FOREIGN KEY (from_account) REFERENCES account(account_number),
+    FOREIGN KEY (to_account) REFERENCES account(account_number)
 );
 ```
 <h3>Donation Table</h3>
@@ -158,7 +158,7 @@ CREATE TABLE donation (
     username VARCHAR(50),
     account_number VARCHAR(12),
     amount DECIMAL(18, 2) NOT NULL,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 ```
 
@@ -172,17 +172,18 @@ CREATE TABLE complain_box (
     account_number VARCHAR(12),
     cause VARCHAR(255) NOT NULL,
     status TINYINT(1) NOT NULL,
-    FOREIGN KEY (account_number) REFERENCES customer(account_number)
+    FOREIGN KEY (account_number) REFERENCES account(account_number)
 );
 
 ```
 
 <h3>Vault Table</h3>
+<h2> use and set the master_account number 1234567890 </h2>
 
 ```sql
 -- Vault Table
 CREATE TABLE vault (
-    muster_account VARCHAR(12) not null,
+    master_account VARCHAR(12) not null,
     balance_cash DECIMAL(18, 2) NOT NULL,
     balance_electric DECIMAL(18, 2) NOT NULL
 );
@@ -193,7 +194,7 @@ they have default value for presentation  id: 12345 pass: admin
 
 ```sql
 Create Table stuff (
-    stuff_id int(5) ,
+    stuff_id int(5) Not null PRIMARY KEY,
     stuff_name varchar(255),
     password varchar(50)
 );

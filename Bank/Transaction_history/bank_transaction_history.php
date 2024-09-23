@@ -1,10 +1,27 @@
 <?php
 @require '../connectserver.php';
 
-// transaction history of bank
-$sql = "SELECT * FROM transaction ORDER BY timestamp DESC";
-$result = $conn->query($sql);
+$masterAccountSql = "SELECT master_account FROM vault LIMIT 1";
+$masterAccountResult = $conn->query($masterAccountSql);
+$masterAccount = '';
 
+if ($masterAccountResult && $masterAccountResult->num_rows > 0) {
+    $masterAccountRow = $masterAccountResult->fetch_assoc();
+    $masterAccount = $masterAccountRow['master_account'];
+}
+$searchQuery = "";
+if (isset($_GET['search'])) {
+    $searchQuery = $_GET['search']; 
+}
+
+$sql = "SELECT * FROM transaction WHERE 
+            transaction_id LIKE '%$searchQuery%' 
+            OR reference_id LIKE '%$searchQuery%' 
+            OR from_account LIKE '%$searchQuery%' 
+            OR to_account LIKE '%$searchQuery%'
+        ORDER BY timestamp DESC";
+
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +32,15 @@ $result = $conn->query($sql);
 </head>
 <body>
     <h2>Bank-Wide Transaction History</h2>
+    <form method="GET" action="">
+        <label for="search">Search by Transaction ID, Reference ID, or Account Number:</label>
+        <input type="text" id="search" name="search" placeholder="Enter search term" value="<?php echo htmlspecialchars($searchQuery); ?>">
+        <button type="submit">Search</button>
+    </form>
+
     <table>
         <thead>
             <tr>
-                <th>Transaction ID</th>
                 <th>Reference ID</th>
                 <th>From Account</th>
                 <th>To Account</th>
@@ -31,14 +53,18 @@ $result = $conn->query($sql);
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $from_account = $row['from_account'];
+                    if (empty($from_account)) {
+                        $from_account = $masterAccount; 
+                    }
+
                     echo "<tr>
-                            <td>{$row['transaction_id']}</td>
-                            <td>{$row['reference_id']}</td>
-                            <td>{$row['from_account']}</td>
-                            <td>{$row['to_account']}</td>
-                            <td>{$row['amount']}</td>
-                            <td>{$row['transaction_type']}</td>
-                            <td>{$row['timestamp']}</td>
+                            <td>" . $row['reference_id'] . "</td>
+                            <td>" . $from_account . "</td>
+                            <td>" . $row['to_account'] . "</td>
+                            <td>" . $row['amount'] . "</td>
+                            <td>" . $row['transaction_type'] . "</td>
+                            <td>" . $row['timestamp'] . "</td>
                           </tr>";
                 }
             } else {
@@ -47,8 +73,13 @@ $result = $conn->query($sql);
             ?>
         </tbody>
     </table>
+    <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
+<button type='submit'>Home</button></form>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
+
 <?php
 $conn->close();
 ?>

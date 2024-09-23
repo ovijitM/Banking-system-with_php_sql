@@ -1,16 +1,16 @@
 <?php
-
 @require '../connectserver.php';
-session_start();
-if (isset($_SESSION['account_number'])) {
-    $account_number = $_SESSION['account_number']; //if available
+
+if (isset($_POST['account_number'])) {
+    $account_number = $_POST['account_number']; 
 } else {
-    $account_number = $_GET['account_number']; 
+    echo "<p>No account number provided.</p>";
+    exit();
 }
 
+// Query to get customer details
 $sql = "SELECT * FROM customer WHERE account_number = '$account_number'";
 $result = $conn->query($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,15 +28,34 @@ $result = $conn->query($sql);
         echo "<p>Account Holder Name: {$row['username']}</p>";
         echo "<p>Email: {$row['email']}</p>";
         echo "<p>Date of Birth: {$row['DOB']}</p>";
-        echo "<p>Balance: {$row['balance']}</p>";
-        echo "<p>Account Status: " . ($row['status'] == 1 ? 'Approved' : 'Pending') . "</p>";
+
+        // Query to get balance from the account table
+        $sql_balance = "SELECT balance FROM account WHERE account_number = '$account_number'";
+        $result_balance = $conn->query($sql_balance);
+
+        if ($result_balance && $result_balance->num_rows > 0) {
+            $row_balance = $result_balance->fetch_assoc();
+            echo "<p>Balance: {$row_balance['balance']}</p>";
+        } else {
+            echo "<p>Balance information not found.</p>";
+        }
+
+        echo "<p>Account Status: ";
+        if ($row['status'] == 1) {
+            echo "Approved";
+        } else {
+            echo "Pending";
+        }
+        echo "</p>";
+
     } else {
-        echo "<p>No account found.</p>";
+        echo "<p>No account found for Account Number: $account_number</p>";
     }
     ?>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 <?php
 $conn->close();
 ?>
-
