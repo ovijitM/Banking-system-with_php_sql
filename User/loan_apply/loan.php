@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2></h2>
+    
     <form action="" method="post">
+    <h2 class="he"> Loan Apply</h2>
         <label for="amount">Amount</label>
         <input type="number" name="amount" id="amount" required>
         <br>
-        <label for="time">Time</label>
+        <label for="time">Duration for Loan</label>
         <input type="date" name="time" id="time" required>
         <br>
         <label for="reason">Reason</label>
-        <input type="text" name="reason" id="reason" required>
+        <input type="text" name="reason" id="reason" placeholder="Which kind of loan you want? and Reason." required>
         <br>
         <button type="submit" class="button-89">Submit Loan</button>
         <button class="button-89" onclick="window.location.href='../../bank.php'">Exit</button>

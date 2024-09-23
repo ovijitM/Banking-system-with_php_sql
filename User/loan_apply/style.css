@@ -76,7 +76,10 @@ button:hover {
     padding: 8px;
   }
 }
-
+.he{
+  
+  margin-left: 120px;
+}
 /* CSS */
 .button-89 {
   --b: 3px; /* border thickness */
