@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Search for an Account</h2>
-    <form action="View_account_info.php" method="GET">
+    <form action="View_account_info.php" method="POST">
         <label for="account_number">Enter Account Number:</label>
         <input type="text" id="account_number" name="account_number" required>
         <button type="submit">Search</button>

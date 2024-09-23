@@ -12,7 +12,6 @@ if ($masterAccountResult && $masterAccountResult->num_rows > 0) {
 }
 
 $account_number = $_POST['account_number'];
-// Get history of login user
 $sql = "SELECT * FROM transaction 
         WHERE from_account = '$account_number' OR to_account = '$account_number' 
         ORDER BY timestamp DESC";
@@ -30,7 +29,6 @@ $result = $conn->query($sql);
     <table>
         <thead>
             <tr>
-                <th>Transaction ID</th>
                 <th>Reference ID</th>
                 <th>From Account</th>
                 <th>To Account</th>
@@ -48,7 +46,6 @@ $result = $conn->query($sql);
                         $from_account = $masterAccount; 
                     }
                     echo "<tr>
-                            <td>{$row['transaction_id']}</td>
                             <td>{$row['reference_id']}</td>
                             <td>{$from_account}</td>
                             <td>{$row['to_account']}</td>
