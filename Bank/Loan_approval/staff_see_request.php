@@ -1,32 +1,20 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "echo_bank";
+include "conection.php";
 
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-// Function to manually escape HTML
 function escapeHtml($string) {
     $search = ['&', '<', '>', '"', "'"];
     $replace = ['&amp;', '&lt;', '&gt;', '&quot;', '&#39;'];
     return str_replace($search, $replace, $string);
 }
 
-// Handle loan status update
-// Handle loan status update
 if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     $loan_id = $_POST['loan_id'];
     $action = $_POST['action'];
-    $status = $action === 'approve' ? 1 : 0;
+    $status = ($action === 'approve') ? 1 : ($action === 'cancel' ? -1 : 0);
 
     $conn->begin_transaction();
     try {
-        // Fetch loan details
+        
         $stmt = $conn->prepare("SELECT account_number, amount, status FROM loan WHERE loan_id = ?");
         if (!$stmt) {
             throw new Exception("Prepare failed: " . $conn->error);
@@ -41,12 +29,15 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
             $amount = $loan_row['amount'];
             $current_status = $loan_row['status'];
 
-            // Check if loan is already approved
+            
             if ($current_status == 1 && $action === 'approve') {
                 throw new Exception("Loan has already been approved.");
             }
+            if ($current_status == -1 && $action === 'cancel') {
+                throw new Exception("Loan has already been canceled.");
+            }
 
-            // Update loan status
+            
             $stmt = $conn->prepare("UPDATE loan SET status = ? WHERE loan_id = ?");
             if (!$stmt) {
                 throw new Exception("Prepare failed: " . $conn->error);
@@ -54,21 +45,21 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
             $stmt->bind_param("ii", $status, $loan_id);
             $stmt->execute();
 
-            // If approved, deduct from vault and add to customer balance
+            
             if ($status === 1) {
+                
                 $stmt = $conn->prepare("UPDATE vault SET balance_electric = balance_electric - ? WHERE master_account = ?");
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
                 }
-                $muster_account = 1234567890; // Vault account number
-                $stmt->bind_param("di", $amount, $muster_account);
+                $master_account = 10000000; 
+                $stmt->bind_param("di", $amount, $master_account);
                 $stmt->execute();
 
                 if ($stmt->affected_rows === 0) {
                     throw new Exception("No rows updated in vault table.");
                 }
 
-                // Update customer's balance
                 $stmt = $conn->prepare("UPDATE account SET balance = balance + ? WHERE account_number = ?");
                 if (!$stmt) {
                     throw new Exception("Prepare failed: " . $conn->error);
@@ -77,12 +68,57 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
                 $stmt->execute();
 
                 if ($stmt->affected_rows === 0) {
-                    throw new Exception("No rows updated in customer table.");
+                    throw new Exception("No rows updated in account table.");
                 }
             }
 
+            
+            if ($status === -1) {
+               
+                $stmt = $conn->prepare("SELECT balance FROM account WHERE account_number = ?");
+                if (!$stmt) {
+                    throw new Exception("Prepare failed: " . $conn->error);
+                }
+                $stmt->bind_param("s", $account_number);
+                $stmt->execute();
+                $balance_result = $stmt->get_result();
+                $account_data = $balance_result->fetch_assoc();
+                $customer_balance = $account_data['balance'];
+
+                if ($customer_balance < $amount) {
+                    throw new Exception("Customer does not have enough balance to cancel the loan.");
+                }
+
+               
+                $stmt = $conn->prepare("UPDATE account SET balance = balance - ? WHERE account_number = ?");
+                if (!$stmt) {
+                    throw new Exception("Prepare failed: " . $conn->error);
+                }
+                $stmt->bind_param("ds", $amount, $account_number);
+                $stmt->execute();
+
+                if ($stmt->affected_rows === 0) {
+                    throw new Exception("No rows updated in account table.");
+                }
+
+                
+
+                $stmt = $conn->prepare("UPDATE vault SET balance_electric = balance_electric - ? WHERE master_account = ?");
+                if (!$stmt) {
+                    throw new Exception("Prepare failed: " . $conn->error);
+                }
+                $master_account = 1234567890; 
+                $stmt->bind_param("di", $amount, $master_account);
+                $stmt->execute();
+
+                if ($stmt->affected_rows === 0) {
+                    throw new Exception("No rows updated in vault table.");
+                }
+
+            }
+
             $conn->commit();
-            echo $status === 1 ? "Loan approved and customer balance updated successfully." : "Loan status updated successfully.";
+            echo ($status === 1) ? "Loan approved and customer balance updated successfully." : (($status === -1) ? "Loan canceled and funds returned to vault." : "Loan status updated successfully.");
         } else {
             echo "Loan not found.";
         }
@@ -92,6 +128,8 @@ if (isset($_POST['action']) && isset($_POST['loan_id'])) {
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
