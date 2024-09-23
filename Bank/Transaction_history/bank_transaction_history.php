@@ -41,7 +41,6 @@ $result = $conn->query($sql);
     <table>
         <thead>
             <tr>
-                <th>Transaction ID</th>
                 <th>Reference ID</th>
                 <th>From Account</th>
                 <th>To Account</th>
@@ -60,7 +59,6 @@ $result = $conn->query($sql);
                     }
 
                     echo "<tr>
-                            <td>" . $row['transaction_id'] . "</td>
                             <td>" . $row['reference_id'] . "</td>
                             <td>" . $from_account . "</td>
                             <td>" . $row['to_account'] . "</td>
