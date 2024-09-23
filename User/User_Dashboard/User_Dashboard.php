@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $accountNumber = $_POST['account_number'];
     $password = $_POST['password'];
 
-  
+
     $sql = "SELECT * FROM customer WHERE account_number = '$accountNumber' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
 
@@ -59,6 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type='hidden' name='account_number' value='$accountNumber'>
                             <button type='submit'>Donate</button>
                         </form>
+                        <a href='../loan_apply/login.php'>loan</a> <br>
+                        <a href='../Loan_Calculator/calculator.php'>loan Calculator</a><br>
+                        <a href='../loan_apply/loan_us.php'>loan details for user</a>
                         <form action='../../bank.php' method='POST'>
                             <button type='submit'>LOGOUT</button>
                         </form>
@@ -75,4 +78,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p class='error'>Invalid account number or password.</p>";
     }
 }
-?>
