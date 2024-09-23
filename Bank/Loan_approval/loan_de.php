@@ -15,8 +15,6 @@
         <input type="number" name="account_number" id="account_number" required>
         <button type="submit" class="button-89">View Loans</button>
     </form>
-<button class="button-89" onclick="window.history.back();">Go Back</button>
-
 
     <?php
    include "conection.php";

@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Application</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2></h2>
+    
     <form action="" method="post">
+    <h2 class="he"> Loan Apply</h2>
         <label for="amount">Amount</label>
         <input type="number" name="amount" id="amount" required>
         <br>
-        <label for="time">Time</label>
+        <label for="time">Duration for Loan</label>
         <input type="date" name="time" id="time" required>
         <br>
         <label for="reason">Reason</label>
-        <input type="text" name="reason" id="reason" required>
+        <input type="text" name="reason" id="reason" placeholder="Which kind of loan you want? and Reason." required>
         <br>
         <button type="submit" class="button-89">Submit Loan</button>
+        <button class="button-89" onclick="window.location.href='../../bank.php'">Exit</button>
     </form>
+
+    
+
 <button class="button-89" onclick="window.history.back();">Go Back</button>
 
 </body>
@@ -51,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $sql = "INSERT INTO loan (loan_account_number, account_number, username, cause, amount, timestamp, status)
-            VALUES ('$loan_account_number', '$account_number', '$customer_username', '$reason', '$amount', '$time', 0)"; // 0 for 'pending' status
+            VALUES ('$loan_account_number', '$account_number', '$customer_username', '$reason', '$amount', '$time', 0)";
 
     if ($conn->query($sql) === TRUE) {
         echo "You ar money will added soon. Have a good day.";
@@ -67,6 +72,7 @@ function generateRandomLoanAccountNumber($length) {
     }
     return $number;
 }
+
 
 $conn->close();
 ?>
