@@ -194,7 +194,7 @@ they have default value for presentation  id: 12345 pass: admin
 
 ```sql
 Create Table stuff (
-    stuff_id int(5) ,
+    stuff_id int(5) Not null PRIMARY KEY,
     stuff_name varchar(255),
     password varchar(50)
 );
