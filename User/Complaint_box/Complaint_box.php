@@ -3,12 +3,7 @@
     
     $username = $_POST['username'];
     $account_number = $_POST['account_number'];
-    
-
-
-
-
-
+    $password=$_POST['password'];
 ?>
 
 
@@ -30,6 +25,14 @@
         <input type='hidden' name='username' value='<?php echo"$username"?>'>
         <button type="submit" name="submit_complaint">Submit Complaint</button>
     </form>
+<button onclick="window.history.back();">Go Back</button>
+
+
+
+
+<form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+
 </body>
 </html>
 

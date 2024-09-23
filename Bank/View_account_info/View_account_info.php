@@ -52,6 +52,8 @@ $result = $conn->query($sql);
         echo "<p>No account found for Account Number: $account_number</p>";
     }
     ?>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 <?php

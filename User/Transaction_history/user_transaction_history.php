@@ -60,6 +60,10 @@ $result = $conn->query($sql);
             ?>
         </tbody>
     </table>
+    <form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 <?php

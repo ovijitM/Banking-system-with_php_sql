@@ -14,5 +14,8 @@
         </div>
         <button type="submit">Check Status</button>
     </form>
+<button onclick="window.history.back();">Go Back</button>
+<form action='../../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
 </body>
 </html>

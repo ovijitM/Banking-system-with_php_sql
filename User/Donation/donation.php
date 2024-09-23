@@ -47,6 +47,10 @@ mysqli_close($conn);
 
         <button type="submit" name="donate">Donate</button>
     </form>
+    <form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 

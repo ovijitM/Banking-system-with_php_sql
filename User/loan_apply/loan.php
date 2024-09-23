@@ -22,7 +22,11 @@
         <button type="submit" class="button-89">Submit Loan</button>
         <button class="button-89" onclick="window.location.href='../../bank.php'">Exit</button>
     </form>
+
     
+
+<button class="button-89" onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 

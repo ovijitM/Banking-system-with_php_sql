@@ -33,5 +33,10 @@
         <button type="submit">Create Account Request</button>
     </form>
     <p>If you already applied, check your account status: <a href="../application_status/Check_status.php">Check Status</a></p>
+
+<button onclick="window.history.back();">Go Back</button>
+<form action='../../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+
 </body>
 </html>

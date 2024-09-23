@@ -12,5 +12,7 @@
         <input type="text" id="nid" name="nid" placeholder="1234567890"><br>
         <button>Submit</button>
     </form>
+    <button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>

@@ -130,6 +130,9 @@ mysqli_close($conn);
 </form>
 <form action="../Fund_transfer/fund_transfer.php" method="POST">
     <button type="submit">Transfer</button>
+
 </form>
+<form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
+<button type='submit'>Home</button></form>
 </body>
 </html>
