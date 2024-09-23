@@ -19,7 +19,9 @@
         <input type="text" name="reason" id="reason" required>
         <br>
         <button type="submit" class="button-89">Submit Loan</button>
+        <button class="button-89" onclick="window.location.href='../../bank.php'">Exit</button>
     </form>
+    
 </body>
 </html>
 
@@ -49,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $sql = "INSERT INTO loan (loan_account_number, account_number, username, cause, amount, timestamp, status)
-            VALUES ('$loan_account_number', '$account_number', '$customer_username', '$reason', '$amount', '$time', 0)"; // 0 for 'pending' status
+            VALUES ('$loan_account_number', '$account_number', '$customer_username', '$reason', '$amount', '$time', 0)";
 
     if ($conn->query($sql) === TRUE) {
         echo "You ar money will added soon. Have a good day.";
@@ -65,6 +67,7 @@ function generateRandomLoanAccountNumber($length) {
     }
     return $number;
 }
+
 
 $conn->close();
 ?>
