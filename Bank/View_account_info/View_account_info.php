@@ -1,11 +1,14 @@
 <?php
-
 @require '../connectserver.php';
 session_start();
+
 if (isset($_SESSION['account_number'])) {
-    $account_number = $_SESSION['account_number']; //if available
-} else {
+    $account_number = $_SESSION['account_number']; 
+} elseif (isset($_GET['account_number'])) {
     $account_number = $_GET['account_number']; 
+} else {
+    echo "<p>No account number provided.</p>";
+    exit();
 }
 
 $sql = "SELECT * FROM customer WHERE account_number = '$account_number'";
@@ -29,9 +32,16 @@ $result = $conn->query($sql);
         echo "<p>Email: {$row['email']}</p>";
         echo "<p>Date of Birth: {$row['DOB']}</p>";
         echo "<p>Balance: {$row['balance']}</p>";
-        echo "<p>Account Status: " . ($row['status'] == 1 ? 'Approved' : 'Pending') . "</p>";
+        echo "<p>Account Status: ";
+        if ($row['status'] == 1) {
+            echo "Approved";
+        } else {
+            echo "Pending";
+        }
+        echo "</p>";
+
     } else {
-        echo "<p>No account found.</p>";
+        echo "<p>No account found for Account Number: $account_number</p>";
     }
     ?>
 </body>
@@ -39,4 +49,3 @@ $result = $conn->query($sql);
 <?php
 $conn->close();
 ?>
-
