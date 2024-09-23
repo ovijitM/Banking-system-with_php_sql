@@ -13,5 +13,7 @@
         <button> log in</button>
         <p><a href="../Chnage_password/forgot_password.php">Forgot Password?</a></p>
     </form>
+    <form action='../bank.php' method='post'>
+    <button type='submit'>Logout</button></form>  
 </body>
 </html>

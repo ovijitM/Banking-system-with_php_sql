@@ -31,5 +31,8 @@
             <p>$<?= number_format($cash_balance, 2) ?></p>
         </div>
     </div>
+    <form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button> </form>
 </body>
 </html>
+

@@ -11,6 +11,9 @@
         <label for="password">password:</label>
         <input type="text" id="password" name="password" ><br>
         <button> log in</button>
+
     </form>
+    <form action='../../bank.php' method='post'>
+    <button type='submit'>Logout</button></form>
 </body>
 </html>

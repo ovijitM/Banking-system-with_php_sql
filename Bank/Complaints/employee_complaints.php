@@ -65,6 +65,10 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </table>
+    <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
+    <button type='submit'>Home</button></form>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 

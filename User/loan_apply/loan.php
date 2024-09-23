@@ -20,6 +20,8 @@
         <br>
         <button type="submit" class="button-89">Submit Loan</button>
     </form>
+<button class="button-89" onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
 

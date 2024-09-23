@@ -15,7 +15,7 @@
 
 <head>
     <title>My Bank</title>
-    <link rel='stylesheet' href='styles_bank_stuff.css'>
+    
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         <form action='../Create_account/Create_account.php'>
             <button type='submit'>Create Account</button>
         </form>
-        <form action='../User_approval/User_request.php'>
+        <form action='../User_approval/User_request.php' target="_blank">
             <button type='submit'>User request</button>
         </form>
         <form action='../View_account_info/search.php'>
@@ -40,13 +40,13 @@
         <form action='../Bank_withdraw/withdraw.php'>
             <button type='submit'>Withdraw</button>
         </form>
-        <form action='../Transaction_history/bank_transaction_history.php'>
-            <button type='submit'>View Transactions</button>
+        <form action='../Transaction_history/bank_transaction_history.php' target="_blank">
+            <button type='submit' >View Transactions</button>
         </form>
         <form action='../Vault/Vault.php'>
-            <button type='submit'>View vault</button>
+            <button type='submit' >View vault</button>
         </form>
-        <form action='../bank.php' method='post'>
+        <form action='../../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
     </div>

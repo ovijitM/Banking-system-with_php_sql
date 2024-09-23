@@ -12,5 +12,9 @@
         <input type="text" id="account_number" name="account_number" required>
         <button type="submit">Search</button>
     </form>
+    <form action='../../bank.php' method='post'>
+<button type='submit'>Logout</button></form>
+<button onclick="window.history.back();">Go Back</button>
+
 </body>
 </html>
