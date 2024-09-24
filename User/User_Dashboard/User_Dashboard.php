@@ -61,6 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type='hidden' name='account_number' value='$accountNumber'>
                 <button type='submit'>Donate</button>
             </form>
+            <form action='../loan_apply/login.php'>
+                <button type='submit'>loan apply</button>
+            </form>
+            <form action='../Loan_Calculator/calculator.php'>
+                <button type='submit'>loan calculator</button>
+            </form>
             <form action='../../bank.php' method='POST'>
                 <button type='submit'>LOGOUT</button>
             </form>
@@ -68,27 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>";
-
-
-
-                            
-                            <input type='hidden' name='username' value='$name'>
-                            <button type='submit'>Complaint box</button></form>
-                        
-                        <form action='../Donation/donation.php' method='post'>
-                            <input type='hidden' name='account_number' value='$accountNumber'>
-                            <button type='submit'>Donate</button>
-                        </form>
-                        <a href='../loan_apply/login.php'>loan</a> <br>
-                        <a href='../Loan_Calculator/calculator.php'>loan Calculator</a><br>
-                        
-                        <form action='../../bank.php' method='POST'>
-                            <button type='submit'>LOGOUT</button>
-                        </form>
-                    </div>
-                </body>
-                </html>";
-
             } else {
                 echo "<p class='error'>Account not found.</p>";
             }

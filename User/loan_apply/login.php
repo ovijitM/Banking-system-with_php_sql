@@ -18,10 +18,11 @@
             <input type="password" name="password" id="password" required>
 
             <button type="submit" class="button-89">Login</button>
+            <button class="button-89" onclick="window.history.back();">Go Back</button>
         </form>
     
     </div>
-    <button class="button-89" onclick="window.history.back();">Go Back</button>
+    
 
 </body>
 </html>
