@@ -21,6 +21,7 @@
         <br>
         <button type="submit" class="button-89">Submit Loan</button>
         <button class="button-89" onclick="window.location.href='../../bank.php'">Exit</button>
+        <button class="button-89" onclick="window.location.href='loan_us.php'">Loan details</button>
     </form>
 
     
