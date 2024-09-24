@@ -17,37 +17,39 @@
     </form>
 
     <?php
-   include "conection.php";
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $account_number = $_POST['account_number'];
+include "conection.php";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $account_number = $_POST['account_number'];
 
-        $loan_query = "SELECT loan_account_number, username, cause, amount, timestamp, status FROM loan WHERE account_number = '$account_number'";
-        $result = $conn->query($loan_query);
+    $loan_query = "SELECT loan_account_number, username, cause, amount, timestamp, status FROM loan WHERE account_number = '$account_number'";
+    $result = $conn->query($loan_query);
 
-        if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr><th>Loan Account Number</th><th>Username</th><th>Cause</th><th>Amount</th><th>Timestamp</th><th>Status</th></tr>";
-            
-          
-            while ($row = $result->fetch_assoc()) {
-                $status = $row['status'] == 0 ? "Pending" : "Approved"; 
-                echo "<tr>";
-                echo "<td>{$row['loan_account_number']}</td>";
-                echo "<td>{$row['username']}</td>";
-                echo "<td>{$row['cause']}</td>";
-                echo "<td>{$row['amount']}</td>";
-                echo "<td>{$row['timestamp']}</td>";
-                echo "<td>$status</td>";
-                echo "</tr>";
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>Loan Account Number</th><th>Username</th><th>Cause</th><th>Amount</th><th>Timestamp</th><th>Status</th></tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            // Check if status is 0 or -1 for pending, else approved
+            if ($row['status'] == 0 || $row['status'] == -1) {
+                $status = "Pending";
+            } else {
+                $status = "Approved";
             }
-            echo "</table>";
-        } else {
-            echo "<p class='no-data'>No loans found for this account number.</p>";
+
+            echo "<tr>";
+            echo "<td>{$row['loan_account_number']}</td>";
+            echo "<td>{$row['username']}</td>";
+            echo "<td>{$row['cause']}</td>";
+            echo "<td>{$row['amount']}</td>";
+            echo "<td>{$row['timestamp']}</td>";
+            echo "<td>$status</td>";
+            echo "</tr>";
         }
+        echo "</table>";
+    } else {
+        echo "<p class='no-data'>No loans found for this account number.</p>";
     }
+}
 
-    $conn->close();
-    ?>
-
-</body>
-</html>
+$conn->close();
+?>
