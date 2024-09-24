@@ -32,6 +32,7 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donation</title>
+    <link rel="stylesheet" href="../css/style7.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <form action="donation.php" method="post">
@@ -47,12 +48,11 @@ mysqli_close($conn);
 
         <button type="submit" name="donate">Donate</button>
     </form>
-    <form action='../../bank.php' method='post'>
-<button type='submit'>Logout</button></form>
-<button onclick="window.history.back();">Go Back</button>
-
+    <button onclick="window.history.back();" class="go-back">Go Back</button> <!-- Smaller Go Back button -->
+    <a class="log--btn7" href='../../bank.php' class='logout-link'>Logout</a> <!-- Logout as a link -->
 </body>
 </html>
+
 
 
 

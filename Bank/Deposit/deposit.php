@@ -29,53 +29,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $account_row = mysqli_fetch_assoc($account_result);
             $current_balance = $account_row['balance'];
 
-            // Show current balance
-            $balance_status = "Current Balance: $" . number_format($current_balance, 2);
-
             // Check if the deposit amount is valid (positive)
             if ($amount > 0) {
-
                 // Check if the deposit amount is greater than the vault's electric balance
                 if ($amount > $vault_balance_electric) {
                     $deposit_status = "Insufficient electric balance in the vault! Contact authority.";
                 } else {
-                    // Update user's account balance by adding the deposit amount
+                    // Update user's account balance and vault balances
                     $add_to_account = mysqli_query($conn, "UPDATE account SET balance = balance + $amount WHERE account_number = '$account_number'");
-
-                    // Update vault's cash balance
                     $add_to_vault_cash = mysqli_query($conn, "UPDATE vault SET balance_cash = balance_cash + $amount WHERE master_account = '$vault_account'");
-
-                    // Update vault's electric balance (deduct the deposit amount from electric balance)
                     $vault_electric = mysqli_query($conn, "UPDATE vault SET balance_electric = balance_electric - $amount WHERE master_account = '$vault_account'");
 
                     // Record the transaction
                     $reference_id = strtoupper(substr(md5(uniqid(rand(), true)), 0, 10)); // Generate a random reference ID
                     $transaction_type = 'Deposit';
                     $record_transaction = mysqli_query($conn, 
-                        "INSERT INTO transaction ( transaction_type, amount, to_account, reference_id) 
+                        "INSERT INTO transaction (transaction_type, amount, to_account, reference_id) 
                          VALUES ('$transaction_type', $amount, '$account_number', '$reference_id')");
 
                     // Check if all updates succeeded
                     if ($add_to_account && $add_to_vault_cash && $vault_electric && $record_transaction) {
                         $deposit_status = "Deposit successful!";
-                        
-                        // Fetch the updated balances
-                        $account_result = mysqli_query($conn, "SELECT balance FROM account WHERE account_number = '$account_number'");
-                        $vault_result = mysqli_query($conn, "SELECT balance_cash, balance_electric FROM vault WHERE master_account = '$vault_account'");
-                        
-                        if ($account_result && mysqli_num_rows($account_result) > 0) {
-                            $account_row = mysqli_fetch_assoc($account_result);
-                            $current_balance = $account_row['balance'];
-                        }
-                        
-                        if ($vault_result && mysqli_num_rows($vault_result) > 0) {
-                            $vault_row = mysqli_fetch_assoc($vault_result);
-                            $vault_balance_cash = $vault_row['balance_cash'];
-                            $vault_balance_electric = $vault_row['balance_electric']; // Fetch updated electric balance
-                        }
-
-                        $balance_status = "Current Balance: $" . number_format($current_balance, 2);
-                        
                     } else {
                         $deposit_status = "Error during deposit. Please try again.";
                     }
@@ -99,14 +73,17 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style8.css">
     <title>Deposit Page</title>
 </head>
 <body>
     <h2>Deposit Page</h2>
 
-    <div><p><?php echo $deposit_status; ?></p></div>
-    <div><p><?php echo $balance_status; ?></p></div>
-    <div><p><?php echo $vault_status; ?></p></div>
+    <div class="status-messages">
+        <p><?php echo $deposit_status; ?></p>
+        <p><?php echo $balance_status; ?></p>
+        <p><?php echo $vault_status; ?></p>
+    </div>
 
     <form action="deposit.php" method="POST">
         <div>
@@ -119,18 +96,14 @@ mysqli_close($conn);
             <input type="number" name="amount" step="0.01" required><br><br>
         </div>
 
-        <button type="submit">Deposit</button>
+        <button type="submit" class="submit-button">Deposit</button>
     </form>
 
-    <button onclick="window.history.back();">Go Back</button>
-    <form action="../Bank_withdraw/withdraw.php" method="POST">
-        <button type="submit">Withdraw</button>
-    </form>
-    <form action="../Fund_transfer/fund_transfer.php" method="POST">
-        <button type="submit">Transfer</button>
-    </form>
+    <div class="button-group">
+        <button onclick="window.history.back();" class="nav-button">Go Back</button>
+        <a href="../bank_Dashboard/Bank_Dashboard.php" class="nav-button">Home</a>
 
-    <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-    <button type='submit'>Home</button></form>
+        
+    </div>
 </body>
 </html>

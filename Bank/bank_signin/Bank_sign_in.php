@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <title>user</title>
-    <link rel="stylesheet" href="./styles/styles_stuff.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
 </head>
 <body>
 <form action="../bank_Dashboard/Bank_Dashboard.php" method="post">

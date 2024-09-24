@@ -1,0 +1,63 @@
+body {
+  background-color: #f0f0f0; /* Light gray background for the body */
+  font-family: Arial, sans-serif; /* Use a clean sans-serif font */
+}
+
+h2 {
+  text-align: center;
+  color: #333; /* Dark text for the heading */
+}
+
+.status-messages {
+  margin: 20px auto;
+  text-align: center;
+}
+
+form {
+  background-color: #fff; /* White background for forms */
+  padding: 50px; /* Padding for form */
+  border-radius: 8px; /* Rounded corners for form */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 400px; /* Maximum width for the form */
+  margin: 20px auto; /* Center the form */
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Padding inside inputs */
+  margin: 10px 0; /* Space between inputs */
+  border: 1px solid #ccc; /* Light border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.submit-button {
+  background-color: #000; /* Black background for the button */
+  color: #fff; /* White text for the button */
+  border: none;
+  padding: 15px; /* Padding for button */
+  border-radius: 4px; /* Rounded corners for button */
+  cursor: pointer;
+  text-align: center;
+  display: block; /* Make it a block element */
+  width: 100%; /* Full width */
+  margin-top: 10px; /* Space above the button */
+  font-size: 16px; /* Increase font size */
+}
+
+.nav-button {
+  background-color: #000; /* Black background for navigation buttons */
+  color: #fff; /* White text for buttons */
+  text-decoration: none; /* Remove underline from anchor */
+  padding: 10px 20px; /* Padding for navigation buttons */
+  border-radius: 4px; /* Rounded corners for navigation buttons */
+  cursor: pointer;
+  text-align: center;
+  display: inline-block; /* Inline block for navigation buttons */
+  margin: 5px; /* Space between buttons */
+}
+
+.navigation-buttons {
+  text-align: center; /* Center navigation buttons */
+  margin-top: 20px; /* Space above navigation buttons */
+}

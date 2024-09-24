@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Bank Account</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../css/style3.css">
 </head>
 <body>
     <h1>Create a New Bank Account</h1>
@@ -28,7 +30,7 @@
             <input type="password" id="password" name="password" required>
         </div>
         <div class="form-group">
-            <label for="address">address</label>
+            <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
         </div>
         <div class="form-group">
@@ -36,10 +38,10 @@
             <input type="number" id="balance" name="balance" required>
         </div>
         <button type="submit">Create Account</button>
-<button onclick="window.history.back();">Go Back</button>
-<form action='../../bank.php' method='post'>
-<button type='submit'>Logout</button></form>
-
+        <button type="button" onclick="window.history.back();">Go Back</button>
+        <form action='../../bank.php' method='post'>
+            <button type='submit'>Logout</button>
+        </form>
     </form>
 </body>
 </html>

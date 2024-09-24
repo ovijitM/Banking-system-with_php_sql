@@ -14,10 +14,13 @@ $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Account Details</title>
-    <link rel="stylesheet" href="styleva.css">
+    <!-- <link rel="stylesheet" href="styleva.css"> -->
+     <link rel="stylesheet" href="../../css/style7.css">
 </head>
 <body>
     <h2>Account Details</h2>

@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8; /* Light gray background */
+  color: #333; /* Dark text color */
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center; /* Center the heading */
+  color: #000; /* Black text for heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.status-container {
+  text-align: center; /* Center status messages */
+  margin-bottom: 20px; /* Space below status messages */
+}
+
+.status-container p {
+  font-size: 16px; /* Text size for status messages */
+  margin: 5px 0; /* Space between status messages */
+  color: #333; /* Red color for error or status messages */
+}
+
+div {
+  margin-bottom: 15px; /* Space between paragraphs */
+}
+
+strong {
+  color: #000; /* Black color for strong text */
+}
+
+form {
+  max-width: 400px; /* Maximum width for the form */
+  margin: 0 auto; /* Center the form */
+  background-color: #fff; /* White background for the form */
+  padding: 50px; /* Padding inside the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+  color: #555; /* Dark gray for labels */
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Padding inside the inputs */
+  margin-bottom: 15px; /* Space below inputs */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button,
+input[type="submit"] {
+  padding: 10px 15px; /* Padding for buttons */
+  font-size: 16px; /* Font size for buttons */
+  color: #fff; /* White text for buttons */
+  background-color: #333; /* Dark button background */
+  border: none; /* No border for buttons */
+  border-radius: 5px; /* Rounded corners for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #555; /* Lighter background on hover */
+}
+
+input[type="hidden"] {
+  display: none; /* Hide hidden inputs */
+}
+
+.button-container {
+  display: flex; /* Use flexbox to arrange buttons in a row */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 20px; /* Space above the button container */
+  gap: 10px; /* Space between buttons */
+}

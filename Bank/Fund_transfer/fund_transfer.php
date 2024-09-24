@@ -76,43 +76,44 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style9.css">
     <title>Echo Bank - Fund Transfer</title>
 </head>
 <body>
     <h2>Welcome to the Fund Transfer Page</h2>
 
-    <div><p><?php echo $fund_status; ?></p></div>
-    <div><p><?php echo $sender_status; ?></p></div>
-    <div><p><?php echo $recipient_status; ?></p></div>
-    <div><p><?php echo $transfer_status; ?></p></div>
+    <div class="status-messages">
+        <p><?php echo $fund_status; ?></p>
+        <p><?php echo $sender_status; ?></p>
+        <p><?php echo $recipient_status; ?></p>
+        <p><?php echo $transfer_status; ?></p>
+    </div>
 
     <form action="fund_transfer.php" method="POST">
         <div>
             <label for="sender_account">Sender Account Number:</label>
-            <input type="text" name="sender_account" required><br><br>
+            <input type="text" name="sender_account" required>
         </div>
 
         <div>
             <label for="recipient_account">Recipient Account Number:</label>
-            <input type="text" name="recipient_account" required><br><br>
+            <input type="text" name="recipient_account" required>
         </div>
 
         <div>
             <label for="amount">Amount:</label>
-            <input type="number" name="amount" step="0.01" required><br><br>
+            <input type="number" name="amount" step="0.01" required>
         </div>
 
-        <button type="submit">Transfer</button>
+        <button type="submit" class="submit-button">Transfer</button>
     </form>
 
-    <button onclick="window.history.back();">Go Back</button>
-    <form action="../Bank_withdraw/withdraw.php" method="POST">
-        <button type="submit">Withdraw</button>
-    </form>
-    <form action="../Deposit/deposit.php" method="POST">
-        <button type="submit">Deposit</button>
-    </form>
-    <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-<button type='submit'>Home</button></form>
+    <div class="navigation-buttons">
+        <button onclick="window.history.back();" class="nav-button">Go Back</button>
+
+        
+        <a href="../bank_Dashboard/Bank_Dashboard.php" class="nav-button">Home</a>
+    </div>
 </body>
 </html>
+

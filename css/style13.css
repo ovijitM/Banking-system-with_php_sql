@@ -1,0 +1,54 @@
+body {
+  background-color: #f0f0f0; /* Light gray background */
+  font-family: Arial, sans-serif; /* Clean sans-serif font */
+}
+
+h1 {
+  text-align: center; /* Center the main heading */
+  color: #333; /* Dark text for the heading */
+}
+
+.balance-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center items horizontally */
+  margin: 20px 0; /* Margin for spacing */
+}
+
+.balance-item {
+  background-color: #fff; /* White background for balance items */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 20px; /* Padding inside the item */
+  margin: 0 10px; /* Space between items */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center; /* Center the text */
+  width: 200px; /* Fixed width for balance items */
+}
+
+.balance-item h2 {
+  color: #000; /* Black text for the balance headers */
+}
+
+.balance-item p {
+  font-size: 24px; /* Larger font for balance amounts */
+  color: #28a745; /* Green color for balance amounts */
+}
+
+.nav-container {
+  display: flex; /* Use flexbox to center the logout button */
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 20px; /* Space above the button */
+}
+
+.nav-button {
+  background-color: #000; /* Black background for logout button */
+  color: #fff; /* White text */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 20px; /* Padding for button */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.nav-button:hover {
+  background-color: #444; /* Darker background on hover */
+}

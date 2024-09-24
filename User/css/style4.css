@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif; /* Set the font family */
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text color */
+  margin: 0; /* Remove default margin */
+  padding: 20px; /* Add some padding */
+}
+
+h1 {
+  text-align: center; /* Center the heading */
+  color: #000; /* Black color for heading */
+  margin-bottom: 30px; /* Space below the heading */
+}
+
+.center-form {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin: 0 auto; /* Center the form */
+  max-width: 400px; /* Set a maximum width for the form */
+}
+
+.form-group {
+  width: 100%; /* Full width for form group */
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+  color: #555; /* Dark gray color for labels */
+}
+
+input[type="text"] {
+  width: 100%; /* Full width for input */
+  padding: 10px; /* Padding inside the input */
+  margin-bottom: 10px; /* Space below the input */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button {
+  padding: 10px 15px; /* Padding for buttons */
+  font-size: 16px; /* Font size for buttons */
+  color: #fff; /* White text for buttons */
+  background-color: #333; /* Dark button background */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+button:hover {
+  background-color: #555; /* Lighter background on hover */
+}
+
+.button-container {
+  display: flex; /* Use flexbox for button alignment */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 20px; /* Space above the button container */
+  gap: 10px; /* Space between buttons */
+}
