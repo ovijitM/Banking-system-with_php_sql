@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </form>
                         <a href='../loan_apply/login.php'>loan</a> <br>
                         <a href='../Loan_Calculator/calculator.php'>loan Calculator</a><br>
-                        <a href='../loan_apply/loan_us.php'>loan details for user</a>
+                        
                         <form action='../../bank.php' method='POST'>
                             <button type='submit'>LOGOUT</button>
                         </form>
