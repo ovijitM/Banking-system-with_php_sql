@@ -9,7 +9,9 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Approve User</title>
-    <!-- <link rel="stylesheet" href="styles.css"> Make sure this path is correct -->
+
+
+    <link rel="stylesheet" href="../../css/style5.css"> 
 </head>
 <body>
     <div class="container">
@@ -44,9 +46,12 @@ $result = $conn->query($sql);
             <?php endwhile; ?>
         </table>
     </div>
-<button onclick="window.history.back();">Go Back</button>
-<form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-<button type='submit'>Home</button></form>
+    <div class="button-container">
+        <button onclick="window.history.back();">Go Back</button>
+        <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
+            <button type='submit'>Home</button>
+        </form>
+    </div>
 </body>
 </html>
 

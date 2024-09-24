@@ -1,21 +1,32 @@
-// @require "connectserver.php";
+<?php
+@require "../connectserver.php";
 
-// $accountNumber = $_POST['id_number'];
-// $password = $_POST['password'];
+$accountNumber = $_POST['id_number'];
+$password = $_POST['password'];
 
-// $sql = "SELECT * FROM staff WHERE user_id = '$accountNumber' AND password = '$password'";
-// $result = $conn->query($sql);
+$sql = "SELECT * FROM stuff WHERE stuff_id = '$accountNumber' AND password = '$password'";
+$result = $conn->query($sql);
 
-// if ($result->num_rows > 0) {
-//     echo "";
-// }
 
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $accountNumber = $row['stuff_id'];
+    $password = $row['password'];
+
+} else {
+    echo "Invalid account number or password!";
+}
+
+?>
 
 <!DOCTYPE html>
 
 <head>
     <title>My Bank</title>
-    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+
 </head>
 
 <body>
@@ -41,13 +52,13 @@
             <button type='submit'>Withdraw</button>
         </form>
         <form action='../Transaction_history/bank_transaction_history.php' target="_blank">
-            <button type='submit' >View Transactions</button>
+            <button type='submit'>View Transactions</button>
         </form>
         <form action='../Complaints/employee_complaints.php'>
             <button type='submit'>Complaint list</button>
         </form>
         <form action='../Vault/Vault.php'>
-            <button type='submit' >View vault</button>
+            <button type='submit'>View vault</button>
         </form>
         <a href="../Loan_approval/staff_see_request.php">loan approved</a><br>
         <a href="../Loan_approval/loan_de.php"> User loan Details</a>

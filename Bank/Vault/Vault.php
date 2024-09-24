@@ -18,6 +18,7 @@
 <html lang="en">
 <head>
     <title>Vault</title>
+    <link rel="stylesheet" href="../../css/style13.css">
 </head>
 <body>
     <h1>Vault</h1>
@@ -31,8 +32,10 @@
             <p>$<?= number_format($cash_balance, 2) ?></p>
         </div>
     </div>
-    <form action='../../bank.php' method='post'>
-<button type='submit'>Logout</button> </form>
+    <div class="nav-container">
+        <form action='../../bank.php' method='post'>
+            <button type='submit' class="nav-button">Logout</button>
+        </form>
+    </div>
 </body>
 </html>
-

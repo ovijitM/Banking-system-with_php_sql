@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Account</title>
-    <link rel="stylesheet" href="stylesearch.css">
+    <link rel="stylesheet" href="../../css/style6.css">
 </head>
 <body>
     <h2>Search for an Account</h2>
@@ -12,9 +12,10 @@
         <input type="text" id="account_number" name="account_number" required>
         <button type="submit">Search</button>
     </form>
-    <form action='../../bank.php' method='post'>
-<button type='submit'>Logout</button></form>
-<button onclick="window.history.back();">Go Back</button>
-
+    
+    <div class="button-container">
+        <button onclick="window.history.back();">Go Back</button>
+        <a href='../bank_Dashboard/Bank_Dashboard.php' class="button-link">Home</a>
+    </div>
 </body>
 </html>

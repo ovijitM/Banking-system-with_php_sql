@@ -88,15 +88,18 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo Bank</title>
+    <link rel="stylesheet" href="../css/style3.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <h2>Welcome to the transfer page</h2>
-    <div><p><?php echo $fund_status; ?></p></div>
-    <div><p><?php echo $recipient_status; ?></p></div>
-    <div><p><?php echo $transfer_status; ?></p></div>
 
-    <div><p><strong>Account Number Is:</strong> <?php echo htmlspecialchars($account_number); ?></p></div> 
-    <div><p>Updated Balance: $<?php echo number_format($current_balance, 2); ?></p></div>
+    <div class="status-container"> <!-- Container for all status and balance information -->
+        <p><?php echo $fund_status; ?></p>
+        <p><?php echo $recipient_status; ?></p>
+        <p><?php echo $transfer_status; ?></p>
+        <p><strong>Account Number Is:</strong> <?php echo htmlspecialchars($account_number); ?></p>
+        <p>Current Balance: $<?php echo number_format($current_balance, 2); ?></p>
+    </div>
 
     <form action="send_money.php" method="POST">
         <div>
@@ -112,10 +115,10 @@ mysqli_close($conn);
         <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
         <input type="hidden" name="current_balance" value="<?php echo htmlspecialchars($current_balance); ?>">
 
-        <button type="button" onclick="window.history.back();">Go Back</button>
-        <input type="submit" value="Transfer">
+        <div class="button-container"> <!-- New container for buttons -->
+            <button type="button" onclick="window.history.back();">Go Back</button>
+            <input type="submit" value="Transfer">
+        </div>
     </form>
-
-
 </body>
 </html>

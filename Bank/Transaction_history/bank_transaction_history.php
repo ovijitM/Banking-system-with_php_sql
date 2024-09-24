@@ -28,14 +28,14 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Bank Transaction History</title>
-    <link rel="stylesheet" href="stylebts.css">
+    <link rel="stylesheet" href="../../css/style11.css">
 </head>
 <body>
     <h2>Bank-Wide Transaction History</h2>
     <form method="GET" action="">
         <label for="search">Search by Transaction ID, Reference ID, or Account Number:</label>
         <input type="text" id="search" name="search" placeholder="Enter search term" value="<?php echo htmlspecialchars($searchQuery); ?>">
-        <button type="submit">Search</button>
+        <button type="submit" class="search-button">Search</button>
     </form>
 
     <table>
@@ -68,17 +68,19 @@ $result = $conn->query($sql);
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='7'>No transactions found</td></tr>";
+                echo "<tr><td colspan='6'>No transactions found</td></tr>";
             }
             ?>
         </tbody>
     </table>
-    <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-<button type='submit'>Home</button></form>
-<button onclick="window.history.back();">Go Back</button>
 
+    <div class="nav-container">
+        <a href='../bank_Dashboard/Bank_Dashboard.php' class='nav-button'>Home</a>
+        <button onclick="window.history.back();" class="nav-button">Go Back</button>
+    </div>
 </body>
 </html>
+
 
 <?php
 $conn->close();

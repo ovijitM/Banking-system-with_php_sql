@@ -22,7 +22,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>User Transaction History</title>
-    <link rel="stylesheet" href="styleuta.css">
+    <link rel="stylesheet" href="../css/style11.css">
 </head>
 <body>
     <h2>Transaction History for Account: <?php echo $account_number; ?></h2>
@@ -55,17 +55,21 @@ $result = $conn->query($sql);
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='7'>No transactions found</td></tr>";
+                echo "<tr><td colspan='6'>No transactions found</td></tr>";
             }
             ?>
         </tbody>
     </table>
-    <form action='../../bank.php' method='post'>
-<button type='submit'>Logout</button></form>
-<button onclick="window.history.back();">Go Back</button>
 
+    <div class="button-container"> <!-- New container for buttons -->
+        <form action='../../bank.php' method='post'>
+            <button type='submit'>Logout</button>
+        </form>
+        <button onclick="window.history.back();">Go Back</button>
+    </div> <!-- End of button container -->
 </body>
 </html>
+
 <?php
 $conn->close();
 ?>

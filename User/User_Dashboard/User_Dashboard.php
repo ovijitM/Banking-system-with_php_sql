@@ -26,33 +26,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $birth = $row["DOB"];
 
                 echo "<!DOCTYPE html>
-                <html lang='en'>
-                <head>
-                    <meta charset='UTF-8'>
-                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                    <title>Bank Account Info</title>
-                    <link rel='stylesheet' href='styles.css'>
-                </head>
-                <body>
-                    <div class='account-info'>
-                        <h1>Hi $name, welcome to the bank</h1>
-                        <h2>Account number: $account<br></h2>
-                        <h2>Account holder name: $name<br></h2>
-                        <h2>Account holder email: $email <br></h2>
-                        <h2>Account holder birth date: $birth <br></h2>
-                        <h2>Account Balance: $balance<br></h2>
-                        <form action='../Send_money/send_money.php' method='POST'>
-                            <input type='hidden' name='account_number' value='$accountNumber'>
-                            <button type='submit'>Send Money</button>
-                        </form>
-                        <form action='../Transaction_history/user_transaction_history.php' method='POST'>
-                            <input type='hidden' name='account_number' value='$accountNumber'>
-                            
-                            <button type='submit'>View Transaction History</button>
-                        </form>
-                        <form action='../Complaint_box/Complaint_box.php' method='post'>
-                            <input type='hidden' name='account_number' value='$accountNumber'>
-                            <input type='hidden' name='password' value='$password'>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Bank Account Info</title>
+    <link rel='stylesheet' href='../css/style2.css'>
+</head>
+<body>
+    <div class='account-info'>
+        <h1>Hi $name, welcome to the bank</h1>
+        <h2>Account number: $account<br></h2>
+        <h2>Account holder name: $name<br></h2>
+        <h2>Account holder email: $email <br></h2>
+        <h2>Account holder birth date: $birth <br></h2>
+        <h2>Account Balance: $balance<br></h2>
+        
+        <div class='button-container'> <!-- New container for buttons -->
+            <form action='../Send_money/send_money.php' method='POST'>
+                <input type='hidden' name='account_number' value='$accountNumber'>
+                <button type='submit'>Send Money</button>
+            </form>
+            <form action='../Transaction_history/user_transaction_history.php' method='POST'>
+                <input type='hidden' name='account_number' value='$accountNumber'>
+                <button type='submit'>View Transaction History</button>
+            </form>
+            <form action='../Complaint_box/Complaint_box.php' method='post'>
+                <input type='hidden' name='account_number' value='$accountNumber'>
+                <input type='hidden' name='password' value='$password'>
+                <input type='hidden' name='username' value='$name'>
+                <button type='submit'>Complaint box</button>
+            </form>
+            <form action='../Donation/donation.php' method='post'>
+                <input type='hidden' name='account_number' value='$accountNumber'>
+                <button type='submit'>Donate</button>
+            </form>
+            <form action='../../bank.php' method='POST'>
+                <button type='submit'>LOGOUT</button>
+            </form>
+        </div> <!-- End of button container -->
+    </div>
+</body>
+</html>";
+
+
 
                             
                             <input type='hidden' name='username' value='$name'>
@@ -71,6 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </body>
                 </html>";
+
             } else {
                 echo "<p class='error'>Account not found.</p>";
             }

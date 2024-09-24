@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>user</title>
-    <!-- <link rel="stylesheet" href="./styles/styles_user.css"> -->
+    <link rel="stylesheet" href="../css/style1.css">
 </head>
 <body>
     <form action="../User_Dashboard/User_Dashboard.php" method="post">

@@ -101,38 +101,38 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="../../css/style10.css">
     <title>Withdrawal Page</title>
 </head>
 <body>
     <h2>Withdrawal Page</h2>
 
-    <div><p><?php echo $withdrawal_status; ?></p></div>
-    <div><p><?php echo $balance_status; ?></p></div>
-    <div><p><?php echo $vault_status; ?></p></div>
+    <div class="status-messages">
+        <p><?php echo $withdrawal_status; ?></p>
+        <p><?php echo $balance_status; ?></p>
+        <p><?php echo $vault_status; ?></p>
+    </div>
 
     <form action="withdraw.php" method="POST">
         <div>
             <label for="account_number">Account Number:</label>
-            <input type="text" name="account_number" required><br><br>
+            <input type="text" name="account_number" required>
         </div>
 
         <div>
             <label for="amount">Amount to Withdraw:</label>
-            <input type="number" name="amount" step="0.01" required><br><br>
+            <input type="number" name="amount" step="0.01" required>
         </div>
 
-        <button type="submit">Withdraw</button>
+        <button type="submit" class="submit-button">Withdraw</button>
     </form>
 
-    <button onclick="window.history.back();">Go Back</button>
-    <form action="../Deposit/deposit.php" method="POST">
-    <button type="submit">Deposit</button>
-</form>
-<form action="../Fund_transfer/fund_transfer.php" method="POST">
-    <button type="submit">Transfer</button>
+    <div class="navigation-buttons">
+        <button onclick="window.history.back();" class="nav-button">Go Back</button>
 
-</form>
-<form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-<button type='submit'>Home</button></form>
+        
+        <a href='../bank_Dashboard/Bank_Dashboard.php' class='nav-button'>Home</a>
+    </div>
 </body>
 </html>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Bank Account</title>
+    <link rel="stylesheet" href="../../css/style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <h1>Create a New Bank Account</h1>
@@ -34,9 +37,9 @@
     </form>
     <p>If you already applied, check your account status: <a href="../application_status/Check_status.php">Check Status</a></p>
 
-<button onclick="window.history.back();">Go Back</button>
-<form action='../../../bank.php' method='post'>
-<button type='submit'>Logout</button></form>
-
+    <div class="button-group">
+        <button onclick="window.history.back();" class="go-back">Go Back</button>
+        
+    </div>
 </body>
 </html>

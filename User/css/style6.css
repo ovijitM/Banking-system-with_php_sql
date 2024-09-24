@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+form {
+  background-color: #fff;
+  padding: 70px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+button {
+  padding: 8px 12px; /* Smaller padding for buttons */
+  font-size: 14px; /* Smaller font size */
+  color: #fff;
+  background-color: #333; /* Black background */
+  border: none; /* No border for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+  width: 70%; /* Full width for the button */
+  text-align: center; /* Center text in button */
+  display: inline-block; /* Make the link behave like a button */
+  text-decoration: none; /* Remove underline from link */
+}
+
+a.logout-link {
+  padding: 8px 12px; /* Smaller padding for buttons */
+  font-size: 14px; /* Smaller font size */
+  color: #fff;
+  background-color: #333; /* Black background */
+  border: none; /* No border for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+  width: 20%; /* Full width for the button */
+  text-align: center; /* Center text in button */
+  display: inline-block; /* Make the link behave like a button */
+  text-decoration: none; /* Remove underline from link */
+}
+
+.go--btn {
+  padding: 8px 12px; /* Smaller padding for buttons */
+  font-size: 14px; /* Smaller font size */
+  color: #fff;
+  background-color: #333; /* Black background */
+  border: none; /* No border for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+  width: 20%; /* Full width for the button */
+  text-align: center; /* Center text in button */
+  display: inline-block; /* Make the link behave like a button */
+  text-decoration: none; /* Remove underline from link */
+}
+
+button:hover, a.logout-link:hover {
+  background-color: #555; /* Change background on hover */
+}
+
+button:last-of-type, a.logout-link {
+  background-color: #333; /* Black for both Go Back and Logout */
+  color: #fff; /* White text color */
+  margin-top: 10px; /* Space above the Go Back button */
+  padding: 8px 12px; /* Smaller padding for Go Back button */
+}
+
+button:last-of-type:hover, a.logout-link:hover {
+  background-color: #555; /* Lighter background on hover */
+  color: #fff; /* Maintain white text on hover */
+}

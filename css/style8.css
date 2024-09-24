@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text for contrast */
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #000; /* Black title */
+}
+
+.status-messages {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #fff; /* White background for forms */
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px; /* Set max width for forms */
+  margin: 0 auto; /* Center forms */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] {
+  width: 100%; /* Full width input fields */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+.submit-button:hover, .nav-button:hover {
+  background-color: #444; /* Darker background on hover */
+}
+
+.button-group {
+  text-align: center; /* Center buttons */
+  margin-top: 20px; /* Space above button group */
+}
+
+.submit-button {
+  background-color: #000; /* Black background for buttons */
+  color: #fff; /* White text for buttons */
+  border: none;
+  padding: 15px; /* Increased padding for a larger button */
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  display: block; /* Make it a block element */
+  width: 100%; /* Make it full width */
+  margin-top: 10px; /* Space above the button */
+  font-size: 16px; /* Increase font size */
+}
+
+.nav-button {
+  background-color: #000; /* Black background for buttons */
+  color: #fff; /* White text for buttons */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  margin: 5px; /* Space between buttons */
+}

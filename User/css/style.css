@@ -1,0 +1,99 @@
+body {
+  background-color: #f0f0f0; /* Light gray background */
+  font-family: Arial, sans-serif; /* Clean sans-serif font */
+  margin: 0; /* Remove default margin */
+  padding: 20px; /* Padding for the body */
+}
+
+h1 {
+  text-align: center; /* Center the heading */
+  color: #333; /* Dark text for the heading */
+}
+
+form {
+  max-width: 600px; /* Maximum width for the form */
+  margin: 20px auto; /* Center the form */
+  background-color: #fff; /* White background for the form */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 50px; /* Padding inside the form */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form fields */
+}
+
+label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+  color: #333; /* Dark text for labels */
+}
+
+input {
+  width: 100%; /* Full width inputs */
+  padding: 10px; /* Padding inside inputs */
+  border: 1px solid #ccc; /* Light gray border for inputs */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size for inputs */
+}
+
+input:focus {
+  border-color: #000; /* Change border color on focus */
+}
+
+button {
+  background-color: #000; /* Black background for buttons */
+  color: #fff; /* White text */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding for buttons */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size for buttons */
+  width: 100%; /* Full width for buttons */
+  margin-top: 10px; /* Margin above buttons */
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #444; /* Darker background on hover */
+}
+
+.button-group {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the buttons */
+  margin-top: 20px; /* Space above the button group */
+}
+
+.go-back {
+  margin-right: 10px; /* Space between buttons */
+  width: auto; /* Allow the button to resize */
+}
+
+.logout {
+  display: inline-block; /* Make it behave like a button */
+  padding: 10px 15px; /* Padding for the link */
+  background-color: #000; /* Black background for the link */
+  color: #fff; /* White text */
+  text-decoration: none; /* Remove underline */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+}
+
+.logout:hover {
+  background-color: #444; /* Darker background on hover */
+}
+
+p {
+  text-align: center; /* Center paragraph text */
+  margin: 20px 0; /* Margin above and below paragraph */
+}
+
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

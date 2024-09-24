@@ -1,0 +1,61 @@
+body {
+  background-color: #f0f0f0; /* Light gray background for the body */
+  font-family: Arial, sans-serif; /* Use a clean sans-serif font */
+}
+
+h2 {
+  text-align: center; /* Center the heading */
+  color: #333; /* Dark text for the heading */
+}
+
+table {
+  width: 90%; /* Table width */
+  margin: 20px auto; /* Center the table */
+  border-collapse: collapse; /* Collapse borders */
+  background-color: #fff; /* White background for the table */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for the table */
+}
+
+th, td {
+  padding: 12px; /* Padding for table cells */
+  text-align: left; /* Left align text in cells */
+  border-bottom: 1px solid #ddd; /* Light gray border for rows */
+}
+
+th {
+  background-color: #f2f2f2; /* Light gray background for header */
+}
+
+.nav-container {
+  display: flex; /* Use flexbox to center the buttons */
+  justify-content: center; /* Center the buttons horizontally */
+  margin: 20px 0; /* Space above and below the button container */
+}
+
+.nav-button {
+  background-color: #000; /* Black background for navigation buttons */
+  color: #fff; /* White text for buttons */
+  text-decoration: none; /* Remove underline from anchor */
+  padding: 10px 20px; /* Padding for navigation buttons */
+  border-radius: 4px; /* Rounded corners for navigation buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  display: inline-block; /* Display as inline block */
+  margin: 0 10px; /* Space between buttons */
+}
+
+.nav-button:hover {
+  background-color: #444; /* Darker background on hover */
+}
+
+.action-button {
+  background-color: #28a745; /* Green background for action button */
+  color: #fff; /* White text for action button */
+  border: none; /* No border for the button */
+  padding: 5px 10px; /* Padding for the button */
+  border-radius: 4px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.action-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
