@@ -1,15 +1,12 @@
 <?php
-// Database connection
-require "../connectserver.php";  // removed the @ to show any possible errors in connection
+require "../connectserver.php"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if the required POST values are set
     if (isset($_POST['username']) && isset($_POST['account_number']) && isset($_POST['amount'])) {
         $username = $_POST['username'];
         $account_number = $_POST['account_number'];
         $amount = $_POST['amount'];
 
-        // Insert donation into the database
         $donation_query = "INSERT INTO donation (username, account_number, amount) 
                            VALUES ('$username', '$account_number', $amount)";
         
