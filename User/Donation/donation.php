@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            VALUES ('$username', '$account_number', $amount)";
         
         if (mysqli_query($conn, $donation_query)) {
-            echo "<p>Donation successful!</p>";
+            echo "<p>Donation successful! You are helping children in PALESTINE!</p>";
+            echo "<h1> if you like our project you can buy us a coffee bkash Number: 01705785272</h1>";
         } else {
             echo "<p>Error: " . mysqli_error($conn) . "</p>";
         }
