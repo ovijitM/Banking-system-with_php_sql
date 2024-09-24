@@ -52,8 +52,7 @@ $result = $conn->query($sql);
     </div>
     <div class="button-container">
         <button onclick="window.history.back();">Go Back</button>
-        <form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-            <button type='submit'>Home</button>
+       
         </form>
     </div>
 </body>

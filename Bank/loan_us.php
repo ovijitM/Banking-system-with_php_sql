@@ -54,7 +54,6 @@ include "conection.php";
     $conn->close();
     ?>
 <button class="button-89" onclick="window.history.back();">Go Back</button>
-<form action='../bank_Dashboard/Bank_Dashboard.php' method='post'>
-<button class="button-89" type='submit'>Home</button></form>
+
 </body>
 </html>

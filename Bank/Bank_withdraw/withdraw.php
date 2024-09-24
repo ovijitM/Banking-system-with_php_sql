@@ -132,7 +132,7 @@ mysqli_close($conn);
         <button onclick="window.history.back();" class="nav-button">Go Back</button>
 
         
-        <a href='../bank_Dashboard/Bank_Dashboard.php' class='nav-button'>Home</a>
+        
     </div>
 </body>
 </html>

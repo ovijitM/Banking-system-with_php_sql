@@ -75,7 +75,7 @@ $result = $conn->query($sql);
     </table>
 
     <div class="nav-container">
-        <a href='../bank_Dashboard/Bank_Dashboard.php' class='nav-button'>Home</a>
+        
         <button onclick="window.history.back();" class="nav-button">Go Back</button>
     </div>
 </body>
