@@ -60,6 +60,8 @@ if ($result->num_rows > 0) {
         <form action='../Vault/Vault.php'>
             <button type='submit'>View vault</button>
         </form>
+        <a href="../Loan_approval/staff_see_request.php">loan approved</a><br>
+        <a href="../Loan_approval/loan_de.php"> User loan Details</a>
         <form action='../../bank.php' method='post'>
             <button type='submit'>Logout</button>
         </form>
