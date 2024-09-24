@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="../css/style5.css"> <!-- Uncomment this to link your CSS -->
+    <link rel="stylesheet" href="../css/style5.css"> 
 </head>
 <body>
     <form action="change_password.php" method="post" class="center-form">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Account Status</title>
-    <link rel="stylesheet" href="../../css/style4.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../../css/style4.css"> 
 </head>
 <body>
     <h1>Check Your Account Status</h1>

@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = mysqli_fetch_assoc($result);
 
         if ($row['status'] == 1) {
-            // Fetch account details
             $sql = "SELECT * FROM account WHERE account_number = '$accountNumber'";
             $result = mysqli_query($conn, $sql);
 

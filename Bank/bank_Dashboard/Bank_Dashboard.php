@@ -12,7 +12,6 @@ if ($result->num_rows > 0) {
     $accountNumber = $row['stuff_id'];
     $password = $row['password'];
 
-    // Login successful, display the banking functions
     ?>
     <!DOCTYPE html>
     <html>

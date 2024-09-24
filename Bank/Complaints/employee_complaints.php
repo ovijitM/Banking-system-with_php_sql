@@ -35,9 +35,9 @@ $result = mysqli_query($conn, $sql);
         </thead>
         <tbody>
             <?php
-            // Check if there are any complaints
+
             if (mysqli_num_rows($result) > 0) {
-                // Fetch rows using mysqli_fetch_array (simpler method)
+               
                 while ($row = mysqli_fetch_array($result)) {
                     $complain_id = $row[0];
                     $username = $row[1];
