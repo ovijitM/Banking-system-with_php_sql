@@ -21,5 +21,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 header("Location: employee_complaints.php");
 exit;
 
-mysqli_close($conn);
 ?>

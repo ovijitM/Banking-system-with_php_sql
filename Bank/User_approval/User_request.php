@@ -34,7 +34,11 @@ $result = $conn->query($sql);
                 <td><?php echo $row['DOB']; ?></td>
                 <td><?php echo $row['NID']; ?></td>
                 <td><?php echo $row['address']; ?></td>
-                <td><?php echo $row['status']; ?></td>
+                <td><?php if ($row['status'] == 0) {
+                        echo "<span style='color: #ff9900;'>Pending</span>";
+                    } else {
+                        echo "<span style='color: #008000;'>Approved</span>";
+                    } ?></td>
                 <td>
                 <form method="post" action="User_approval.php">
                     <input type="hidden" name="account_number" value="<?php echo $row['account_number']; ?>">

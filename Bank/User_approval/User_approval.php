@@ -1,5 +1,5 @@
 <?php
-@require "../connectserver.php";
+require "../connectserver.php";
 
 $account = $_POST['account_number'];
 

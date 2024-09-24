@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p>Error: " . mysqli_error($conn) . "</p>";
         }
     } else {
-        echo "<p>Error: Please fill all the fields.</p>";
+        echo "<p>Please fill all the fields.</p>";
     }
 }
 

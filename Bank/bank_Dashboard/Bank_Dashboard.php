@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
             <form action='../Create_account/Create_account.php'>
                 <button type='submit'>Create Account</button>
             </form>
-            <form action='../User_approval/User_request.php' target="_blank">
+            <form action='../User_approval/User_request.php'>
                 <button type='submit'>User request</button>
             </form>
             <form action='../View_account_info/search.php'>
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
             <form action='../Bank_withdraw/withdraw.php'>
                 <button type='submit'>Withdraw</button>
             </form>
-            <form action='../Transaction_history/bank_transaction_history.php' target="_blank">
+            <form action='../Transaction_history/bank_transaction_history.php' >
                 <button type='submit'>View Transactions</button>
             </form>
             <form action='../Complaints/employee_complaints.php'>
